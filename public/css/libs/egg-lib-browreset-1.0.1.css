@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*-------------Browser Reset------------*/
+html,body {
+	height: 100%;
+	width: 100%;
+}
+body {
+		font-size: 62.5%;	
+		font-family: Arial, Helvetica, sans-serif;
+}
+h1, h2, h3, h4, h5, h6, p, div, ul, ol, li, code, pre, form, fieldset, blockquote, html, body, section, hgroup, article, input {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+  -moz-opacity: .999;
+
+}
+table {
+	border-collapse: collapse; /* prevents double borders */
+	border-spacing: 0;
+}
+
+td, th, caption {
+	font-weight: normal;
+	text-align: left;
+}
+
+img, fieldset  { 
+	border: 0; /* remove border around linked images and fieldsets */
+}
+
+ol  {
+	margin-left: 1.8em; /* add smaller indent than default */
+	list-style: decimal;
+}
+
+ul {
+	list-style: none;
+}
+
+q:before, q:after { 
+	content:''; /* remove browser generated quote marks */
+}
+
+/*-------------HTML5 shiv------------*/
+article, aside, figure, footer, header, hgroup, nav, section {
+	display: block;
+}
+input {
+	box-shadow: none;
+}
+
+
+a {
+	text-decoration: none;
+	color: #000;
+}

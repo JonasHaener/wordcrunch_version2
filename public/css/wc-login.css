@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+
+.clearFix:after{
+		content: ".";
+		display:block;
+		clear:both;
+		visibility:hidden;
+}
+.float-left {
+		float: left;
+}
+.center-text {
+		text-align: center;
+}
+
+/*
+============================================== 
+		LOGIN
+============================================== 
+*/
+body {
+	background: url(../images/metal_patt_s.jpg);
+}
+
+.field-border {
+		background-color: #FCFCFC;
+		border: solid thin #999; 
+}
+.bottom-border-thin-light {
+		border-bottom: solid thin #CCC;
+}
+.margin-right-3em {
+		margin-right: 3em;
+}
+.margin-bottom-2em {
+		margin-bottom: 2em;
+}
+.margin-top-10perc { 
+		margin-top: 10%;
+}
+
+h1 {
+		font-size: 3.9em;
+		padding: 10% 0 5% 0;
+		font-weight: bold;
+		color: #2B2B2B;
+}
+
+.border-thin-grey {
+		border: thin solid #999;
+}
+
+
+#login_form {
+		/*background-color: rgb(230,125,0);*/
+		background: #E9E9E9;
+		padding: 5% 5% 10% 10%;
+		position: relative;
+}
+.focus:focus {
+	outline: 3px solid #000;
+	background: #E8E8E8;
+}
+
+input[type=text],input[type=password] {
+	font-size: 1.3em;
+	width: 50%;
+	height: 1.8em;
+}
+input[type=text] {
+	text-align: right;
+	padding-right: .5em;
+}
+
+#formErrors {
+}
+
+#formErrors span {
+	font-size: 1.6em;
+	color: #F00 !important;
+}
+.error {
+	color: #FC0;
+	font-stretch: expanded;
+	
+}
+form .ok {
+	background-image: url(../../images/calculator/form_ok.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+
+#login_form input[type=text], #login_form input[type=password]  {
+		width: 80%;
+		height: 3%;
+		margin-bottom: 3%;
+		color: #6B6B6B;
+		font-size: 1.6em;
+		padding: .7em 0 .7em .7em;
+		text-align: left;
+		position: relative;
+}
+
+#submit {
+		display:block;
+		position: relative;
+		font-size: 1.6em;
+		margin-top: 3.5%;
+		color: #555;
+		padding: 1.1% 0;
+		width: 25%;
+		border: 0.1em solid #D3D3D3;
+}
+
+@media screen and (min-width: 500px) {
+	#content {
+		font-size: 100%;
+		padding: 10%;
+		position: relative;
+		overflow: hidden;
+		max-width: 50em;
+		margin: 5% auto;
+	}
+	#login {
+		margin-bottom: 5%;
+	}
+
+}
+
+@media screen and (max-width: 500px) {
+	#content {
+		height: 100%;
+		font-size: 100%;
+		position: relative;
+		overflow: hidden;
+		padding-bottom: 20%;
+	}
+	#mario {
+		display: none;
+	}
+	
+
+}
+
+#mario {
+	position: absolute;
+	bottom: 6em;
+	left: -1em;
+	z-index: -1;
+}
+
+
+

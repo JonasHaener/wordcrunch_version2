@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.margin-left-1-5em {
+		margin-left: 1.5em;
+	
+}
+
+
+
+.margin-top-1em {
+		margin-top: 2em;
+}
+.margin-bottom-1em {
+		margin-bottom: 1em;
+}
+.margin-bottom-0_5em {
+		margin-bottom: .5em;
+}
+.margin-right-1-5em {
+		margin-right: 3em;
+	
+}
+.margin-right-025em {
+		margin-right: 0.25em;
+}
+.margin-right-05em {
+		margin-right: 0.5em;
+}
+.margin-right-1em {
+		margin-right: 1em;
+}
+.margin-right-2em {
+		margin-right: 2em;
+}
+.margin-right-3em {
+		margin-right: 3em;
+}
+.margin-bottom-2em {
+		margin-bottom: 2em;
+}
+.margin-top-10perc { 
+		margin-top: 10%;
+}
+.margin-top-3_5em { 
+		margin-top: 3.5em;
+}
+.margin-bott-3_5em { 
+		margin-bottom: 3.5em;
+}
+
+.padd-top-1em {
+		padding-top: 1em;
+}
+.padd-top-2em {
+		padding-top: 2em;
+}
+.padd-bott-1em {
+		padding-bottom: 1em;
+}
+
+

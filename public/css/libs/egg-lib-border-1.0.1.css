@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.border-thin-grey {
+		border: thin #CCC solid;
+}
+.border-top-thin-grey {
+		border-top: thin #CCC solid;
+}
+.border-bott-thin-grey {
+		border-bottom: thin #CCC solid;
+}
+.border-thin-blue {
+		border: thin #02aeef solid;
+}
+.border-thin-black {
+		border: thin #000 solid;
+}
+
+.border-left-purple {
+		border-left: thin #953cac solid;
+}
+.border-right-purple {
+		border-right: thin #953cac solid;
+}
+
+.border-right-grey {
+		border-right: 1px #D3D3D3 solid;
+}

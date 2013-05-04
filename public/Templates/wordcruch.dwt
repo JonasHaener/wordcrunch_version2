@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html class="cssgradients">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- TemplateBeginEditable name="doctitle" -->
+	<title>Untitled Document</title>
+	<!-- TemplateEndEditable -->
+	<!-- TemplateBeginEditable name="head" -->
+	<link type="text/css" rel="stylesheet" href="lib/style/main.css">
+	<script></script>
+	<!-- TemplateEndEditable -->
+</head>
+<body>
+<!-- TemplateBeginEditable name="body2" -->body
+<!-- TemplateEndEditable -->
+<!--<script src="../js/libs/jQuery-v1.8.2.js"></script>-->
+<script src="../js/libs/jQuery-v1.9.1.js"></script>
+<script src="../js/modules/helpers/wc-helpers.js"></script>
+<script src="../js/modules/db/control/wc-db-control.js"></script>
+<script src="../js/modules/db/model/wc-db-model.js"></script>
+<script src="../js/modules/db/view/wc-db-view-update.js"></script>
+<script src="../js/modules/interface/wc-db-navi.js"></script>
+</body>
+
+</html>

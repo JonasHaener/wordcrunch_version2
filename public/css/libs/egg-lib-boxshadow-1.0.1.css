@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/* boxshadow && radius && emboss */
+
+.box-shadow-med {
+		box-shadow: 1px 1px 20px;
+}
+.box-shadow-lit {
+		box-shadow: 1px 1px 5px;
+}
+.box-shadow-vlit {
+		box-shadow: 0px 1px 3px #797979;
+}
+
+
+
+
+
+.border-radius-med {
+		-moz-border-radius: 10px 10px;
+}
+
+
+
+
+.emboss-black {
+	text-shadow: 0 2px 0 #FFF, 0 -1px 0 #000;
+}
+.emboss-black-bot {
+	text-shadow: 1px 1px 0 #000;
+}
+.emboss-orange-white {
+	text-shadow: 1px 1px 0 #F90, -1px -1px 0 #C00;
+}

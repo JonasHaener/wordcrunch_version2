@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* Colors */
+
+
+/*******Windows colors**************/
+
+.backgr-win-blue {
+		background-color: #02aeef;
+}
+.backgr-win-blue-h:hover {
+		background-color: #02aeef;
+}
+.backgr-win-white {
+		background-color: #FFF;
+}
+.backgr-win-green {
+	 	background-color: #80ba00
+}
+.backgr-win-blue-shade-m { 
+	 	background-color: #3fc2f3;
+}
+.backgr-win-lue-shade-l { 
+	 	background-color: #b3e7fa;
+}
+.backgr-win-purple {
+		background: #953cac;
+}
+.backgr-win-purple-h:hover {
+		background: #953cac;
+}
+.backgr-win-purple-l {
+	 	background-color: #e1c8e8;
+}
+.backgr-win-orange {
+	 	background-color: #ff8c00;
+}
+
+
+/*******Windows colors**************/
+
+
+.backgr-orange {
+		background: #F60;
+}
+.backgr-grey-sl {
+		background: #FBFBFB;
+}
+.backgr-grey-vl {
+		background: #E9E9E9;
+}
+.backgr-grey-l {
+		background: #EFEFEF;
+}
+
+.backgr-grey-m {
+		/*background: #E8E8E8;*/
+		background: #D9D9D9;
+}
+.backgr-light-blue {
+	background-color: #e7f1f5;
+}
+
+.whiteType {
+	color: #F9F9F9;
+}
+.col-light-grey {
+	color: #BCBCBC;
+}
+.txt-light-blue {
+	color: #e7f1f5;
+}
+.txt-white-h:hover {
+	color: #FFF;
+}
