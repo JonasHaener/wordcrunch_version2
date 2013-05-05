@@ -38,13 +38,15 @@ WC_A.helper.trim_comas = function (str) {
 
 // prepare table for display
 WC_A.helper.prep_table = function (data) {	
+		// receives JS object notation
 		var a, b,
 			 	// results db array
 			 	db_res_arr = data.result,
 			 	status = data.status,
 			 	rows = "";
-		// if an error message is present return the error here
-		if (status) {
+		// empty 'status' === "null"
+		// "null" for no status update: normal data retrieval 
+		if (status !== "null" && status !== "") {
 			return rows += "<tr>"+"<td>"+status+"</td></tr>";
 		}
 		// id no error loop through results rows		
@@ -86,44 +88,48 @@ WC_A.helper.Ajax = function (config) {
 				this.attempts = config.attempts; 
 		};
 		this.ajx_call = function() {
-				var _this = this,
-						_config = this.config;	
-				// AJAX call
-				$.ajax({
-					type: _config.type,
-					url: _config.url,
-					data: _this.ajx_data,
-					beforeSend: function() {
-						// execute before send
-						_config.beforeSend();
-						// add spinner		
-						_config.spinnerAdd(); 	
-					},
-					// success function
-					success: function (data) {
-						// send call type and data to callback
-						_config.success(_this.call_type, data); 
-					},
-					// error handling function
-					error: function(xhr, status) {
-						if(_this.attempts-- === 0) {
-							// After 4 trials call end to server
-							_config.error();
+			try {
+					var _this = this,
+							_config = this.config;	
+					// AJAX call
+					$.ajax({
+						type: _config.type,
+						url: _config.url,
+						data: _this.ajx_data,
+						beforeSend: function() {
+							// execute before send
+							_config.beforeSend();
+							// add spinner		
+							_config.spinnerAdd(); 	
+						},
+						// success function
+						success: function (data) {
+							// send call type and data to callback
+							_config.success(_this.call_type, data); 
+						},
+						// error handling function
+						error: function(xhr, status) {
+							if(_this.attempts-- === 0) {
+								// After 4 trials call end to server
+								_config.error();
+								_config.spinnerHide();
+								_this.reset();
+								return;
+							}
+							setTimeout(function() {
+								_this.ajx_call();
+								//console.log('called again');
+							}, _this.delay *= 2);
+						},
+						// ajax complete event
+						complete: function() { 
+							// remove spinner
 							_config.spinnerHide();
-							_this.reset();
-							return;
+							_config.complete();
 						}
-						setTimeout(function() {
-							_this.ajx_call();
-							//console.log('called again');
-						}, _this.delay *= 2);
-					},
-					// ajax complete event
-					complete: function() { 
-						// remove spinner
-						_config.spinnerHide();
-						_config.complete();
-					}
-				});
-			};
+					});
+			} catch(e) {
+				// log error
+			}
 	};
+};

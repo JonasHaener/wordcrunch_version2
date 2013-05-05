@@ -1,6 +1,5 @@
 "use strict";
 
-
 /*========================================================
 			NS Namespace
 ==========================================================*/
@@ -44,14 +43,15 @@ WC_KW.db.view = {
 	// update status and error messaged
 	update_status: function (data) {
 		this.user_message
+			.stop(true, true)
 			.text(data)
 			// show user feedback and fade out
 			.hide()
 			.addClass("gradient-yellow-rgb")
 			.appendTo(this.message_pos)
-			.fadeIn(500)
-			.delay(1000)
-			.fadeOut(500);
+			.fadeIn(300)
+			.delay(1300)
+			.fadeOut(300);
 	},
 	// update ids field
 	update_id: function (data) {
@@ -75,10 +75,11 @@ WC_KW.db.view = {
  ---------------------------**/
 WC_KW.db.model = {
 		// transform JSON into JavaScript object
+		NO_RESULT: "Sorry, no result found",
 		ready_json: function (json_data) {
 			// check for string type
 			if (typeof json_data !== 'string') {
-				return;
+				throw "WC: String input expected";
 			}
 			var a, b,
 					res_string = "",
@@ -89,15 +90,15 @@ WC_KW.db.model = {
 			//remove brackets		
 			res_string = json_data.replace(/\[(.*)\]/g, '$1');
 			// separate object entities
-			res_string = res_string.replace(/\}(,){/g, '}|{');
+			res_string = res_string.replace(/\}(,)\{/g, '}|{');
 			// split into array
 			res_arr = res_string.split('|');
 			// prepare javascript results object
 			for (a = 0; a < res_arr.length; a += 1) {
-				// if results array is empty assign error message
-				// stop loop
-				if (res_arr[a] === "") {
-					js_res_array[0] = { status: "Sorry, no result found" };
+				// if results array is empty assign error message stop loop
+				// for display in resuls rows
+				if (res_arr[a] === "" && typeof res_arr[a] !== 'object') {
+					js_res_array[0] = { status: this.NO_RESULT };
 					ids = "0";
 					break;
 				}
@@ -123,7 +124,7 @@ WC_KW.db.model = {
 					ids = "";
 			// prepare for view
 			if (typeof call_type !== 'string') {
-				return;
+				throw "WC: String input expected for call_type";
 			}
 			// call view based on type 'search', 'retrieve', 'edit', 'delete'
 			switch (call_type) {
@@ -134,37 +135,29 @@ WC_KW.db.model = {
 					ids = js_obj['ids_used'];
 					view.update_content( rows );
 					view.update_id( ids );
-					// display if not entries found
-					if (typeof status === "string") {
+					// display if no entries found
+					if (status !== "null") {
 						view.update_status( status );	
 					}
 					break;
-				// retrieve values for 
-				// editing form	
+				// retrieve values for editing form	
 				case 'retrieve':
 					if (typeof result.id === 'string' && result.id !== "") {
 						view.update_for_edit( result );
 					}
-					if (typeof status === "string") {
-						view.update_status( status );	
-					}
 					break;
-				// editing and saving 
-				// from form
+				// editing and saving from form
 				case 'edit':
 					view.update_for_edit( result );
-					if (typeof status === "string") {
-						view.update_status( status );	
-					}
 					break;			
-					// deleting and saving 
-					// from form	
+					// deleting and saving from form	
 				case 'delete':
 					view.update_for_edit( result );
-					if (typeof status === "string") {
-						view.update_status( status );	
-					}
 					break;
+			}
+			// update status
+			if (status !== "null") {
+				view.update_status( status );	
 			}
 	},
 	// controlls DB model
@@ -198,22 +191,22 @@ WC_KW.db.model = {
  ---------------------------**/
 // JSON
 WC_KW.db.controller = {
-	// refresher trigger
-	do_search: (function () {
-		$('#entry_refresh').on('click', function () {
+  // refresher trigger
+  do_search: (function () {
+    $('#entry_refresh').on('click', function () {
 			var form_data = $('#form_search').serialize();
 			WC_KW.db.model.controller('search', form_data);
 		});
-	})(),
+	}()),
 	// submit entries from edit entry form
-	do_edit: function () {
+	do_edit: (function () {
 		$('#go_edit').on('click', function () {
 			var form_data = $('#form_edit_entry').serialize();
 			WC_KW.db.model.controller('edit', form_data);	
 		});
-	}(),
+	}()),
 	// retrieve data from DB for editing
-	retrieve_for_edit: function () {
+	retrieve_for_edit: (function () {
 		$('#id_to_edit').on('blur', function () {
 			// do not submit the radio buttons to 
 			// avoid conflict when submitting entire form
@@ -221,5 +214,5 @@ WC_KW.db.controller = {
 			var form = $('#form_edit_entry > input').not('input[type=radio]');
 			WC_KW.db.model.controller('retrieve', form);
 		});
-	}()
+	}())
 };

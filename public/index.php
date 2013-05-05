@@ -33,9 +33,9 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 					<?php } ?>
 				</ul>
 			</nav>
+			<div id="spinner" class="ajax-load"></div>
 		<!--main container-->
 			<div id="main_container" class="">
-					<div id="spinner" class="ajax-load"></div>
 					<!--working container-->		
 					<div id="work_container" class="backgr-win-white border-thin-grey float-left">
 							<h2 id="menu_entry_displ" class="col-light-grey float-left margin-right-1-5em">Keyword search</h2>

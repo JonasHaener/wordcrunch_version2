@@ -16,6 +16,7 @@
 
 function WC_db_writer($arr_db_data) {	
 	$n;
+	// returns empty array if not results found
 	$res_all = array();
 	// loop results array and retrieve subresults from subarrays
 	foreach ( $arr_db_data as $n ) {
@@ -30,8 +31,8 @@ function WC_db_writer($arr_db_data) {
 		$res['spanish']  	= $n['spanish'];
 		$res['comments'] 	= $n['comments'];
 		$res['updated']  	= $n['updated'];
-		// sends status back to AJAX
-		$res['status']  	= $n['status'];			
+		// for normal data retrieval no status is provided == null;
+		$res['status']  	= ($n['status']) ? $n['status'] : "null"; // null for use in JavaScript status handling
 		// assign subresults to all results array
 		$res_all[] = $res;
 	}

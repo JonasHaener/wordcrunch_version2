@@ -323,7 +323,7 @@ h2 {
 }
 #index_module
 #inp_search {
-		background: url(../images/layout/maginifier.png) 3.5px center no-repeat;
+		background: url(../images/layout/magnifier.png) 3.5px center no-repeat;
 		background-size: 8%;
 		text-indent: 3em;
 }
@@ -402,15 +402,15 @@ th {
 
 #index_module 
 #spinner {
-	background-image: url(../images/layout/ajax-loader-clock-50x50px.gif);
+	background-image: url(../images/layout/ajax-progress.gif);
 	background-repeat: no-repeat;
 	background-position: center 2em;
 	display: none; /* shown and hidden by js DB controller */
-	height: 10em;
-	left: 50%;
+	height: 5em;
+	left: 3em;
 	position: absolute;
-	top: 5em;
-	width: 10em;
+	top: 6.3em;
+	width: 5em;
 	z-index: 10;
 
 }
