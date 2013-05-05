@@ -16,8 +16,10 @@ require_once('../view/wc-db-view.inc.php');
 
 
 // AJAX error testing
-//header("HTTP/1.0 404 Not Found");
-//exit();
+// sleep(5);
+// header("HTTP/1.0 404 Not Found");
+// exit();
+
 
 /**---------------------------
 		Controller

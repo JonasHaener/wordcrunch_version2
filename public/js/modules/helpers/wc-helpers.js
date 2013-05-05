@@ -87,15 +87,17 @@ WC_A.helper.Ajax = function (config) {
 		};
 		this.ajx_call = function() {
 				var _this = this,
-						_config = this.config;
+						_config = this.config;	
 				// AJAX call
 				$.ajax({
 					type: _config.type,
 					url: _config.url,
 					data: _this.ajx_data,
 					beforeSend: function() {
-						// show spinner
-						_config.beforeSend(); 
+						// execute before send
+						_config.beforeSend();
+						// add spinner		
+						_config.spinnerAdd(); 	
 					},
 					// success function
 					success: function (data) {
@@ -107,6 +109,7 @@ WC_A.helper.Ajax = function (config) {
 						if(_this.attempts-- === 0) {
 							// After 4 trials call end to server
 							_config.error();
+							_config.spinnerHide();
 							_this.reset();
 							return;
 						}
@@ -118,6 +121,7 @@ WC_A.helper.Ajax = function (config) {
 					// ajax complete event
 					complete: function() { 
 						// remove spinner
+						_config.spinnerHide();
 						_config.complete();
 					}
 				});

@@ -181,10 +181,12 @@ WC_KW.db.model = {
 						'type'				:	'POST',
 						'attempts'		:	3,
 						'delay'				:	1000,
-						'beforeSend'	: function() { WC_KW.db.view.show_spinner(); },
-						'success'			: WC_KW.db.model.prep_results_view,
-						'complete'		:	function() { WC_KW.db.view.hide_spinner(); },
-						'error'				:	function() { WC_KW.db.view.hide_spinner(); WC_KW.db.view.update_status("Server not responding"); }
+						'spinnerAdd'	: WC_KW.db.view.show_spinner, // function
+						'spinnerHide'	:	WC_KW.db.view.hide_spinner, // function
+						'beforeSend'	: function() {  },
+						'success'			: WC_KW.db.model.prep_results_view, // function
+						'complete'		:	function() {  },
+						'error'				:	function() { WC_KW.db.view.update_status("Server not responding"); }
 			});
 			// make ajax call
 			ajax.ajx_call();

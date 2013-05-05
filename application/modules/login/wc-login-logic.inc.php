@@ -10,7 +10,7 @@ $LOGIN_ERROR = "";
 function WC_login_logic( $user_input, &$error, &$session ) {
 	
 	// redirect to main page on successfull login
-	$REDIRECT = "http://localhost/wordcrunch_5/public";
+	$REDIRECT = "http://localhost/wordcrunch_version2/public";
 	// db connection
 	$db = new WC_DB_connect("localhost", "wordcrunch", "<88>>cru99**ncher", "wordcrunch", "mysqli");
 	// call model and pass db connection
