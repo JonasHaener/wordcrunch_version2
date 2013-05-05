@@ -211,8 +211,10 @@ WC_KW.db.controller = {
 			// do not submit the radio buttons to 
 			// avoid conflict when submitting entire form
 			// when updating Database
-			var form = $('#form_edit_entry > input').not('input[type=radio]');
-			WC_KW.db.model.controller('retrieve', form);
+			var form_data = $('#form_edit_entry > input')
+											.not('input[type=radio]')
+											.serialize();
+			WC_KW.db.model.controller('retrieve', form_data);
 		});
 	}())
 };
