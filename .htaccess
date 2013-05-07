@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+#Redirect root
+RewriteRule ^$ http://127.0.0.1/wordcrunch_version2/public/ [L]

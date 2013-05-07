@@ -260,8 +260,8 @@ h2 {
 /********************** work container ***********************/
 #index_module
 #work_container {
+		min-width: 100%;
 		padding: 2em;
-		width: 100%;
 }
 
 
