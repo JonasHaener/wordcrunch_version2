@@ -170,7 +170,7 @@ WC_KW.db.model = {
 			{ 
 						'call_type' 	: call_type, 
 						'data'				: form_data,
-						'url'					:	'../application/modules/db/controllers/wc-db-control.inc.php',
+						'url'					:	'../application/modules/db-kw/controllers/wc-db-control.inc.php',
 						'type'				:	'POST',
 						'attempts'		:	3,
 						'delay'				:	1000,
@@ -192,7 +192,7 @@ WC_KW.db.model = {
 // JSON
 WC_KW.db.controller = {
   // refresher trigger
-  do_search: (function () {
+	do_search: (function () {
     $('#entry_refresh').on('click', function () {
 			var form_data = $('#form_search').serialize();
 			WC_KW.db.model.controller('search', form_data);

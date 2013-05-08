@@ -121,14 +121,14 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 											</tr>
 									</tbody>
 							</table>
+              <br>
+							<div>
+								<label class="ids_label">IDS:&nbsp;</label>
+								<input type="text" class="ids_used" placeholder="&nbsp;&nbsp;Used IDs appear here">
+							</div>	
+							<br>
 							<footer class="">
-									<br>
-									<div>
-											<label class="ids_label">IDS:&nbsp;</label>
-											<input type="text" class="ids_used" placeholder="&nbsp;&nbsp;Used IDs appear here">
-									</div>	
-									<br>
-									<p>Today: <span id="date"></span></p>	
+								<p>Today: <span id="date"></span></p>	
 							</footer>
 							<!--<div id="user_feedback" class="gradient-yellow-rgb">Hell user feedack</div>-->	
 					</div>
@@ -138,7 +138,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 <!--<script src="../js/libs/jQuery-v1.8.2.js"></script>-->
 <script src="js/libs/jQuery-v1.9.1.js"></script>
 <script src="js/modules/helpers/wc-helpers.js"></script>
-<script src="js/modules/db/control/wc-db-keywords.js"></script>
-<script src="js/modules/interface/wc-db-navi.js"></script>
+<script src="js/modules/db/wc-db-keywords.js"></script>
+<script src="js/modules/interface/wc-navi.js"></script>
 </body>
 </html>

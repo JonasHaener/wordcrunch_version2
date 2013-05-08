@@ -37,8 +37,10 @@ class WC_DB_delete
 				}
 				//prepare statement	
 				// sql query for term search
+				$sql_lock = "LOCK TABLES keywords WRITE";
 				$sql = "DELETE FROM keywords WHERE id='{$input['id_to_edit']}'"; 
 				// if query yields results execute search			
+				$this->db_conn->query($sql_lock);
 				$this->db_conn->query($sql);
 				// assign success message
 				if($this->db_conn->affected_rows > 0) {

@@ -35,9 +35,8 @@ class WC_DB_updater
 				if ( !is_numeric( $upd['id_to_edit']) ) {
 						return;
 				}
-						
-				//prepare statement	
-				$stmt = $this->db_conn->stmt_init();
+				
+				$sql_lock = "LOCK TABLES keywords WRITE";		
 				// sql query for term search
 				$sql_term = "UPDATE keywords 
 								SET 
@@ -50,8 +49,9 @@ class WC_DB_updater
 								spanish	= ?,
 								comments	= ?
 								WHERE id	= ?";
-				// if query yields results execute search			
-				
+								
+				//prepare statement	
+				$stmt = $this->db_conn->stmt_init();
 				if ($stmt->prepare( $sql_term )) {
 					//var_dump($stmt);
 					$stmt->bind_param(
@@ -66,7 +66,8 @@ class WC_DB_updater
 							$upd['edit_comments'], // string
 							$upd['id_to_edit'] // (id) integer
 							);
-					
+							
+					$this->db_conn->query($sql_lock);
 					$stmt->execute();
 					$r = $stmt->store_result();
 					// assign result of operation
@@ -91,4 +92,3 @@ class WC_DB_updater
 			
 		}
 }
-

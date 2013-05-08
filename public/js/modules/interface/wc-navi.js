@@ -64,6 +64,7 @@ WC_KW.forms = {
 	
 	// input field cleaner
 	clean_input_fields: function () {
+			// cleam search field
 			$('#inp_search').on('change', function() {
 				var txt = $(this).val();
 				// true cleans within the string too
@@ -76,7 +77,8 @@ WC_KW.forms = {
 			$('#form_edit_entry > input').on('change', function() {
 				var txt = $(this).val();
 				// false cleans left, right
-				txt = WC_A.helper.trim_string(txt, false);
+				// true cleans within the string too
+				txt = WC_A.helper.trim_string(txt, true);
 				// reduce commas to maximum one
 				txt = WC_A.helper.trim_comas(txt);
 				// reassign text to input field

@@ -34,6 +34,7 @@ class WC_DB_create
 				$stmt = $this->db_conn->stmt_init();
 				// sql query for term search
 				// id > auto_increment !!
+				$sql_lock = "LOCK TABLES keywords WRITE";
 				$sql_term = "INSERT INTO keywords (german,english,french,dutch,japanese,italian,spanish,comments)
 				VALUES(?,?,?,?,?,?,?,?)";
 				// if query yields results execute search			
@@ -50,6 +51,7 @@ class WC_DB_create
 							$insert['edit_spanish'], // string
 							$insert['edit_comments'] // string
 							);
+					$this->db_conn->query($sql_lock);
 					$stmt->execute();
 					$r = $stmt->store_result();
 					// assign result of operation

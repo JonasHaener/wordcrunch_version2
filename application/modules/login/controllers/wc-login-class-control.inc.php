@@ -38,16 +38,17 @@ class WC_LOGIN_model
 				// free results
 				$stmt->free_result();
 				// assign results
-				//$this->res = ( crypt($pw, $user_pw) === $user_pw ) ? true : false;
+				
+				/*
+				$hash = password_hash($password, PASSWORD_BCRYPT);
+				*/
 				
 				// uses PASSWORD_COMPAT library
 				$this->res = ( password_verify($pw, $user_pw) ) ? true : false;
 				//echo 'works';
 				$this->err = ( $this->res === true ) ? "" : "Username or password incorrect :(";
 				
-				/*
-				$hash = password_hash($password, PASSWORD_BCRYPT);
-				*/
+				
 			}
 	}
 }

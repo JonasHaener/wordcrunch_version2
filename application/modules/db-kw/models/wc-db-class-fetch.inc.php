@@ -98,7 +98,7 @@ class WC_DB_fetch
 			======================================*/
 			if ( is_numeric($this->sear_arr[0]) ) {
 				
-				$this->db_res = search_id($this->sear_arr, $this->db_conn);
+				$this->db_res = search_id( $this->sear_arr, $this->db_conn );
 				$this->db_conn->close();
 			} else {
 				$this->db_res = search_term( $this->sear_arr, $this->db_conn, $this->stmt );  

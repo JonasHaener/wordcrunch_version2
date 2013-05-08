@@ -26,7 +26,8 @@ WC_A.helper.trim_string = function (str, bool) {
 	// bool true = clean within string too, 
 	if (bool === true) {
 		var str_s1 = str.trim(),
-				str_s2 = str_s1.replace(/\s*/g, "");
+				str_s2 = str_s1.replace(/,(\s+)/g, ",");
+				str_s2 = str_s2.replace(/\s+/g, " ");
 		return str_s2;		
 	}
 };
@@ -54,17 +55,18 @@ WC_A.helper.prep_table = function (data) {
 			// get current position
 			b = db_res_arr[a];
 			// js_array from model containes DB returned rows
-			rows += "<tr>"+"<td>"+
-				b['id']+"</td><td>"+
-				b['german']+"</td><td>"+
-				b['english']+"</td><td>"+
-				b['french']+"</td><td>"+
-				b['dutch']+"</td><td>"+
-				b['japanese']+"</td><td>"+
-				b['italian']+"</td><td>"+
-				b['spanish']+"</td><td>"+
-				b['comments']+"</td><td>"+
-				b['updated']+"</td></tr>";
+			rows += "<tr>"+
+			"<td>" + b['id'] + "</td>" +
+			"<td>" + "<span>["+ b['id']+ "]</span>" + b['german'] + "</td>" + 
+			"<td>" + "<span>["+ b['id']+ "]</span>" + b['english'] + "</td>" + 
+			"<td>" + "<span>["+ b['id']+ "]</span>" + b['french'] + "</td>" + 
+			"<td>" + "<span>["+ b['id']+ "]</span>" + b['dutch'] + "</td>" + 
+			"<td>" + "<span>["+ b['id']+ "]</span>" + b['japanese'] + "</td>" + 
+			"<td>" + "<span>["+ b['id']+ "]</span>" + b['italian'] + "</td>" + 
+			"<td>" + "<span>["+ b['id']+ "]</span>" + b['spanish'] + "</td>" + 
+			"<td>" + b['comments'] + "</td>" +
+			"<td>" + b['updated'] + "</td>" +
+			"</tr>";
 		}
 		// clean up
 		db_res_arr = null;
