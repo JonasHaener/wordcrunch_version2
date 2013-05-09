@@ -79,12 +79,12 @@ WC_A.helper.ajax = {};
 
 // make Ajax DB call
 WC_A.helper.Ajax = function (config) {
-		this.config = config;
-		this.ajx_data	= config.data;
-		this.call_type = config.call_type;
+		this.config 		= config;
+		this.ajx_data		= config.data;
+		this.call_type 	= config.call_type;
 		this.ajx_result = "";
-		this.attempts = config.attempts;
-		this.delay = config.delay;
+		this.attempts 	= config.attempts;
+		this.delay 			= config.delay;
 		this.reset = function () { 
 				this.delay = config.delay; 
 				this.attempts = config.attempts; 
@@ -128,6 +128,61 @@ WC_A.helper.Ajax = function (config) {
 							// remove spinner
 							_config.spinnerHide();
 							_config.complete();
+						}
+					});
+			} catch(e) {
+				// log error
+			}
+	};
+};
+
+WC_A.helper.Ajax_dtl = function (m,v,c) {
+		this.model = m.model;
+		this.view = v.view;
+		this.controller = c.controller;
+		this.form_data = this.controller.form_data();
+		this.url = this.model.url;
+		this.delay = 1000;
+		this.attempts = 3;
+		this.reset = function () { 
+				this.delay = 1000;
+				this.attempts = 3; 
+		};
+		this.ajx_call = function() {
+			console.log('formdata: ', this.form_data);
+			try {
+					var _this = this;
+					// AJAX call
+					$.ajax({
+						type: "POST",
+						url: _this.url,
+						data: _this.form_data,
+						beforeSend: function() {
+							// execute before send
+							// add spinner		
+						},
+						// success function
+						success: function (json_data) {
+							// send call type and data to callback
+							var res = _this.model.control(json_data);
+							
+							_this.view.update(res);
+						},
+						// error handling function
+						error: function(xhr, status) {
+							if(_this.attempts-- === 0) {
+								// After 4 trials call end to server
+								_this.reset();
+								return;
+							}
+							setTimeout(function() {
+								_this.ajx_call();
+								//console.log('called again');
+							}, _this.delay *= 2);
+						},
+						// ajax complete event
+						complete: function() { 
+							// remove spinner
 						}
 					});
 			} catch(e) {

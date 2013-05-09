@@ -48,17 +48,15 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 									</ul>
 									<!-- form and search navigation-->
 									<form id="form_search" name="form_search" class="float-left inl-block" action="">
-											<input type="text" id="inp_search" list="search_list" class="inp-field margin-right-1em inl-block" name="search" placeholder="Enter keyword / comma seperated IDs here">
-											<label class="ids_label">IDS:&nbsp;</label>
+											<input type="text" id="inp_search" list="search_list" class="inp-field margin-right-1em inl-block" name="search" placeholder="Enter keyword / comma seperated IDs here">	
+                      <label for="dtl_de" class="dtl_label">DE:&nbsp;</label>
+                      <input type="radio" id="dtl_de" name="dtl_lang" checked value="german">
+                      <label for="dtl_en" class="dtl_label">&nbsp;EN:&nbsp;</label>
+                      <input type="radio" id="dtl_en" name="dtl_lang" value="english">
+											<label class="ids_label">&nbsp;&nbsp;IDS:&nbsp;</label>
 											<input type="text" class="ids_used" placeholder="&nbsp;&nbsp;Used IDs appear here">
 											<datalist id="search_list">
-													<option value="Stromaufnahme"></option>
-													<option value="Spannungsversogung"></option>
-													<option value="Current consumption"></option>
-													<option value="Stromversorgung"></option>
-													<option></option>
-													<option></option>
-													<option></option>
+												<!--<option value="filled from DB"></option>-->
 											</datalist>
 									</form>
 							</nav>
@@ -139,6 +137,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 <script src="js/libs/jQuery-v1.9.1.js"></script>
 <script src="js/modules/helpers/wc-helpers.js"></script>
 <script src="js/modules/db/wc-db-keywords.js"></script>
+<script src="js/modules/db-datalist-kw/wc-db-kw-datalist.js"></script>
 <script src="js/modules/interface/wc-navi.js"></script>
 </body>
 </html>

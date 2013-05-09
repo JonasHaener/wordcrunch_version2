@@ -75,11 +75,11 @@ class WC_LOGIN_view
 		public $rights;
 		// constructor
 		public function __construct($model, $controller) {
-			$this->model = $model;
+			$this->model 			= $model;
 			$this->controller = $controller;
-			$this->error = $model->err;
-			$this->user = $model->user;
-			$this->rights = $model->rights;
+			$this->error 			= $model->err;
+			$this->user 			= $model->user;
+			$this->rights			= $model->rights;
 		}
 		// fetcher query function
 		public function get_login() {

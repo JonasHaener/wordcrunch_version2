@@ -86,11 +86,17 @@ WC_KW.forms = {
 			});
 	},
 	
+	// input field cleaner
+	data_list: function() {
+		$('input[name=dtl_lang]').on( 'change', WC_KW.datalist.control );
+		
+	},
 	// init function
 	init: function() {
 		this.show_hide();
 		this.edit_entry();
 		this.clean_input_fields();
+		this.data_list();
 	}
 };
 WC_KW.forms.init();

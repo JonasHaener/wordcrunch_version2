@@ -336,6 +336,13 @@ h2 {
 }
 
 #index_module
+.dtl_label {
+		font-size: 1.3em;	
+		
+}
+
+
+#index_module
 /* entry editor form */
 #form_edit_entry {
 		display: none;
