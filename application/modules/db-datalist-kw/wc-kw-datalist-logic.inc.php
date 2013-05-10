@@ -20,10 +20,9 @@ function WC_datalist_logic($data_type, $dtl_lang) {
 	// call model and pass db connection
 
 	$model = new WC_DATALIST_model($db->conn);
-		
+	
 	// call controller, pass model and userinput
 	$controller = new WC_DATALIST_controller($model, $data_type, $dtl_lang);
-	
 	// call view, pass model, controller
 	$view = new WC_DATALIST_view($model, $controller);
 	
@@ -31,8 +30,6 @@ function WC_datalist_logic($data_type, $dtl_lang) {
 	$db->conn->close();
 	// return JSON
 	echo $view->get_result();
-	echo $view->get_result();
-	
 }
 WC_datalist_logic($_POST['data_type'], $_POST['dtl_lang']);
 

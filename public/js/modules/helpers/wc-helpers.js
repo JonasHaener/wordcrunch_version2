@@ -38,7 +38,8 @@ WC_A.helper.trim_comas = function (str) {
 };
 
 // prepare table for display
-WC_A.helper.prep_table = function (data) {	
+WC_A.helper.prep_table = function (data) {
+	var start = Date.now();
 		// receives JS object notation
 		var a, b,
 			 	// results db array
@@ -71,6 +72,8 @@ WC_A.helper.prep_table = function (data) {
 		// clean up
 		db_res_arr = null;
 		// return results rows
+		var stop = Date.now();
+		console.log('WC_A.helper.prep_table: ', (stop - start) + " ms"); 
 		return rows;
 	};
 // ajax helper object
@@ -107,7 +110,7 @@ WC_A.helper.Ajax = function (config) {
 						// success function
 						success: function (data) {
 							// send call type and data to callback
-							_config.success(_this.call_type, data); 
+							_config.success(_this.call_type, data);
 						},
 						// error handling function
 						error: function(xhr, status) {
@@ -149,7 +152,6 @@ WC_A.helper.Ajax_dtl = function (m,v,c) {
 				this.attempts = 3; 
 		};
 		this.ajx_call = function() {
-			console.log('formdata: ', this.form_data);
 			try {
 					var _this = this;
 					// AJAX call
@@ -162,11 +164,9 @@ WC_A.helper.Ajax_dtl = function (m,v,c) {
 							// add spinner		
 						},
 						// success function
-						success: function (json_data) {
+						success: function (data) {
 							// send call type and data to callback
-							var res = _this.model.control(json_data);
-							
-							_this.view.update(res);
+							_this.view.update( _this.model.control(data) );
 						},
 						// error handling function
 						error: function(xhr, status) {

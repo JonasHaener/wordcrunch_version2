@@ -113,7 +113,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 													<th class="backgr-win-blue-shade-m">Updated</th>
 											</tr>
 									</thead>
-									<tbody>
+									<tbody id="tBody">
 											<tr>
 													<td>Result will be displayed here</td>
 											</tr>
@@ -135,9 +135,9 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 	</div>
 <!--<script src="../js/libs/jQuery-v1.8.2.js"></script>-->
 <script src="js/libs/jQuery-v1.9.1.js"></script>
-<script src="js/modules/helpers/wc-helpers.js"></script>
+<script src="js/modules/helpers/wc-helpers-min.js"></script>
 <script src="js/modules/db/wc-db-keywords.js"></script>
-<script src="js/modules/db-datalist-kw/wc-db-kw-datalist.js"></script>
+<script src="js/modules/db-datalist-kw/wc-db-kw-datalist-min.js"></script>
 <script src="js/modules/interface/wc-navi.js"></script>
 </body>
 </html>
