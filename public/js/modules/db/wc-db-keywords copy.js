@@ -146,7 +146,12 @@ WC_KW.db.model = {
 				case 'search':
 					rows = WC_A.helper.prep_table( js_obj ),
 					ids = js_obj['ids_used'];
+					
+					var startD = Date.now();
 					view.update_content( rows );
+					var stopD = Date.now();
+					console.log('startD',stopD-startD);
+					
 					view.update_id( ids );
 					// display if no entries found
 					if (status !== "null") {

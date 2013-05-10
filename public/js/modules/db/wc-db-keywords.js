@@ -22,6 +22,10 @@ WC_KW.db = {};
  ---------------------------**/
 WC_KW.db.view = {
 	// results containers
+	write_timer: null, 
+	stop_update: function() {
+		clearTimeout(WC_KW.db.view.write_timer);
+	},
 	container: $('#tBody'),
 	ids_container: $('.ids_used'),
 	user_message: $('<div id="user_feedback" class=""></div>'),
@@ -37,13 +41,19 @@ WC_KW.db.view = {
 		$('#spinner').hide();	
 	},
 	// write results to results field
-	update_content: function (data) {
-		var start = Date.now(); 
-		
-		this.container.html(data);
-		
-		var stop = Date.now(); 
-		console.log('DB update_content: ', (stop - start) + " ms");
+	update_content: function (arrData) {
+		var arrRows = arrData,
+				_this = this;
+		// set boolean flag listened by custom event
+		function update() {
+			$('#tBody').append(arrRows.shift());
+			if (arrRows.length > 0) {	 
+				_this.write_timer = setTimeout(function() {
+					update(); 
+					}, 90);
+			}
+		}
+		update();
 	},
 	// update status and error messaged
 	update_status: function (data) {
@@ -133,7 +143,7 @@ WC_KW.db.model = {
 					js_obj = _this.ready_json(json),
 					result = js_obj.result[0],
 					status = js_obj.status,
-					rows = "",
+					arrRows = [],
 					ids = "";
 			// prepare for view
 			if (typeof call_type !== 'string') {
@@ -144,15 +154,15 @@ WC_KW.db.model = {
 				// DB search
 				// results
 				case 'search':
-					rows = WC_A.helper.prep_table( js_obj ),
+					arrRows = WC_A.helper.prep_table( js_obj ),
 					ids = js_obj['ids_used'];
 					
 					var startD = Date.now();
-					view.update_content( rows );
+					view.update_content( arrRows );
 					var stopD = Date.now();
 					console.log('startD',stopD-startD);
 					
-					view.update_id( ids );
+					view.update_id(ids);
 					// display if no entries found
 					if (status !== "null") {
 						view.update_status( status );	
@@ -214,8 +224,13 @@ WC_KW.db.controller = {
   // refresher trigger
 	do_search: (function () {
     $('#entry_refresh').on('click', function () {
+			$('#tBody').empty();
 			var form_data = $('#form_search').serialize();
 			WC_KW.db.model.controller('search', form_data);
+			// trigger stop update to stop reflow during updating process
+			// used to control update process in VIEW
+			$('#entry_refresh').trigger('stop_update');
+			
 		});
 	}()),
 	// submit entries from edit entry form

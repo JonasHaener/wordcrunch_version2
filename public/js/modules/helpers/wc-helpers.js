@@ -41,41 +41,50 @@ WC_A.helper.trim_comas = function (str) {
 WC_A.helper.prep_table = function (data) {
 	var start = Date.now();
 		// receives JS object notation
-		var a, b,
-			 	// results db array
-			 	db_res_arr = data.result,
-			 	status = data.status,
-			 	rows = "";
+			 	var arrRes = data.result,
+			 			status = data.status,
+						arrSubRows = [],// [row,row,row,...]
+			 			arrRows = [], // [[rowx10],[rowx10],[rowx10],...]
+						a, b, c, d = 0,
+						arr10 = [];
+						 
 		// empty 'status' === "null"
 		// "null" for no status update: normal data retrieval 
 		if (status !== "null" && status !== "") {
-			return rows += "<tr>"+"<td>"+status+"</td></tr>";
+			return ["<tr>"+"<td>"+status+"</td></tr>"];
 		}
-		// id no error loop through results rows		
-		for (a = 0; a < db_res_arr.length; a += 1) {
+			
+		for (a = 0; a < arrRes.length; a += 1) {
 			// get current position
-			b = db_res_arr[a];
-			// js_array from model containes DB returned rows
-			rows += "<tr>"+
-			"<td>" + b['id'] + "</td>" +
-			"<td>" + "<span>["+ b['id']+ "]</span>" + b['german'] + "</td>" + 
-			"<td>" + "<span>["+ b['id']+ "]</span>" + b['english'] + "</td>" + 
-			"<td>" + "<span>["+ b['id']+ "]</span>" + b['french'] + "</td>" + 
-			"<td>" + "<span>["+ b['id']+ "]</span>" + b['dutch'] + "</td>" + 
-			"<td>" + "<span>["+ b['id']+ "]</span>" + b['japanese'] + "</td>" + 
-			"<td>" + "<span>["+ b['id']+ "]</span>" + b['italian'] + "</td>" + 
-			"<td>" + "<span>["+ b['id']+ "]</span>" + b['spanish'] + "</td>" + 
-			"<td>" + b['comments'] + "</td>" +
-			"<td>" + b['updated'] + "</td>" +
-			"</tr>";
+				b = arrRes[a];
+				arrSubRows.push("<tr>"+ "<td>" + b['id'] + "</td>" +
+					"<td>" + "<span>["+ b['id']+ "]</span>" + b['german'] + "</td>" + 
+					"<td>" + "<span>["+ b['id']+ "]</span>" + b['english'] + "</td>" + 
+					"<td>" + "<span>["+ b['id']+ "]</span>" + b['french'] + "</td>" + 
+					"<td>" + "<span>["+ b['id']+ "]</span>" + b['dutch'] + "</td>" + 
+					"<td>" + "<span>["+ b['id']+ "]</span>" + b['japanese'] + "</td>" + 
+					"<td>" + "<span>["+ b['id']+ "]</span>" + b['italian'] + "</td>" + 
+					"<td>" + "<span>["+ b['id']+ "]</span>" + b['spanish'] + "</td>" + 
+					"<td>" + b['comments'] + "</td>" + "<td>" + b['updated'] + "</td>" +
+					"</tr>" );
+		}
+		for (c = 0; c < arrSubRows.length; c += 1) {		
+			 arr10.push(arrSubRows[c]);
+			 if (arr10.length === 10) {
+				 arrRows.push(arr10);
+				 arr10 = [];
+			 } else if (c+1 === arrSubRows.length) {
+				 arrRows.push(arr10);
+			}
 		}
 		// clean up
-		db_res_arr = null;
+		data = null;
 		// return results rows
 		var stop = Date.now();
 		console.log('WC_A.helper.prep_table: ', (stop - start) + " ms"); 
-		return rows;
-	};
+		console.log(arrRows);
+		return arrRows;
+};
 // ajax helper object
 WC_A.helper.ajax = {};
 // prepare table for results
