@@ -19,9 +19,6 @@ WC_KW.db = {};
 $('body').bind('start-update', function(e, bool){
  	WC_KW.db.view.ctrl_update(bool);
 });
-$('body').bind('view-complete', function(e, bool){
- 	WC_KW.db.controller.report_update(bool);
-});
 
 /*========================================================
 			DATABASE
@@ -61,13 +58,10 @@ WC_KW.db.view = {
 		// set boolean flag listened by custom event
 		function update() {
 			if (arrRows.length > 0 && _this.write_timer === true) {
-				$('#tBody').trigger('view-complete',[ false ]);
 				$('#tBody').append(arrRows.shift());
 				console.log('arrRows.length timer update: ', arrRows.length);
 				console.log('rows are timeout updated');
 				setTimeout(function() { update(); }, 150);
-			} else {
-				 $('#tBody').trigger('view-complete',[ true ]);	
 			}
 		}
 		update();
@@ -239,33 +233,30 @@ WC_KW.db.model = {
 // JSON
 WC_KW.db.controller = {
   // refresher trigger
-	view_updated: true,
-	report_update: function(bool) {
-			this.view_updated = (bool === true) ? true : false;
-	},
-	do_search: function () {
-		var _this = this;
-		//var clicked = 0
+	do_search: (function () {
+		var clicked = 0
     $('#entry_refresh').on('click', function () {
-			if (_this.view_updated === true) {
+			if (clicked === 0) {
+				clicked = 1;
 				$('#entry_refresh').trigger('start-update',[ true ]);
 				var form_data = $('#form_search').serialize();
 				// send input to model
 				WC_KW.db.model.controller('search', form_data);
-			} else if (_this.view_updated === false) {
+			} else if (clicked === 1) {
 				$('#entry_refresh').trigger('start-update',[ false ]);
+				clicked = 0;
 			}
 		});
-	},
+	}()),
 	// submit entries from edit entry form
-	do_edit: function () {
+	do_edit: (function () {
 		$('#go_edit').on('click', function () {
 			var form_data = $('#form_edit_entry').serialize();
 			WC_KW.db.model.controller('edit', form_data);	
 		});
-	},
+	}()),
 	// retrieve data from DB for editing
-	retrieve_for_edit: function () {
+	retrieve_for_edit: (function () {
 		$('#id_to_edit').on('blur', function () {
 			// do not submit the radio buttons to 
 			// avoid conflict when submitting entire form
@@ -275,11 +266,5 @@ WC_KW.db.controller = {
 											.serialize();
 			WC_KW.db.model.controller('retrieve', form_data);
 		});
-	},
-	init: function() {
-		this.do_search();
-		this.do_edit();	
-		this.retrieve_for_edit();
-	}
+	}())
 };
-WC_KW.db.controller.init();

@@ -57,7 +57,7 @@ WC_A.helper.prep_table = function (data) {
 		for (a = 0; a < arrRes.length; a += 1) {
 			// get current position
 				b = arrRes[a];
-				arrSubRows.push("<tr>"+ "<td>" + b['id'] + "</td>" +
+				arrSubRows.push("<tr class='res_row'>"+ "<td class='row_id'>" + b['id'] + "</td>" +
 					"<td>" + "<span>["+ b['id']+ "]</span>" + b['german'] + "</td>" + 
 					"<td>" + "<span>["+ b['id']+ "]</span>" + b['english'] + "</td>" + 
 					"<td>" + "<span>["+ b['id']+ "]</span>" + b['french'] + "</td>" + 
@@ -69,9 +69,9 @@ WC_A.helper.prep_table = function (data) {
 					"</tr>" );
 		}
 		// split into arrays of 10 items per array
-		for (c = 0; c < arrSubRows.length; c += 1) {		
+		for (c = 0; c < arrSubRows.length; c+=1) {		
 			 arr10.push(arrSubRows[c]);
-			 if (arr10.length === 5) {
+			 if (arr10.length === 10) {
 				 arrRows.push(arr10);
 				 arr10 = [];
 			 } else if (c+1 === arrSubRows.length) {
@@ -104,13 +104,21 @@ WC_A.helper.Ajax = function (config) {
 		this.ajx_call = function() {
 			try {
 					var _this = this,
-							_config = this.config;	
+							_config = this.config;
+					
+					// speed eval only	
+					var start;
+					var stop;
+								
 					// AJAX call
 					$.ajax({
 						type: _config.type,
 						url: _config.url,
 						data: _this.ajx_data,
 						beforeSend: function() {
+							
+							start  = Date.now();
+							
 							// execute before send
 							_config.beforeSend();
 							// add spinner		
@@ -118,6 +126,8 @@ WC_A.helper.Ajax = function (config) {
 						},
 						// success function
 						success: function (data) {
+							stop  = Date.now();
+							console.log('AJAX till complete is called: ', (stop-start) + " ms");
 							// send call type and data to callback
 							_config.success(_this.call_type, data);
 						},
