@@ -199,7 +199,7 @@ WC_KW.db.model = {
 	},
 	// controlls DB model
 	controller: function(call_type, form_data) { 
-			if (call_type && call_type === "edit" && WC_KW.db.view.warn_confirm() === false) {
+			if (call_type === "edit" && WC_KW.db.view.warn_confirm() === false) {
 				return;
 			}
 			// create ajax object
