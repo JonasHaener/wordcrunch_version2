@@ -68,9 +68,10 @@ WC_A.helper.prep_table = function (data) {
 					"<td>" + b['comments'] + "</td>" + "<td>" + b['updated'] + "</td>" +
 					"</tr>" );
 		}
+		// split into arrays of 10 items per array
 		for (c = 0; c < arrSubRows.length; c += 1) {		
 			 arr10.push(arrSubRows[c]);
-			 if (arr10.length === 10) {
+			 if (arr10.length === 5) {
 				 arrRows.push(arr10);
 				 arr10 = [];
 			 } else if (c+1 === arrSubRows.length) {
@@ -81,8 +82,7 @@ WC_A.helper.prep_table = function (data) {
 		data = null;
 		// return results rows
 		var stop = Date.now();
-		console.log('WC_A.helper.prep_table: ', (stop - start) + " ms"); 
-		console.log(arrRows);
+		console.log('WC_A.helper.prep_table: ', (stop - start) + " ms");
 		return arrRows;
 };
 // ajax helper object

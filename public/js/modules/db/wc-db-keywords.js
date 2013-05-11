@@ -14,6 +14,13 @@ WC_KW.db = {};
 // add forms object to NS
 
 /*========================================================
+			Custom events for WC keywords
+==========================================================*/
+$('body').bind('stop_update', function(e){
+ 	WC_KW.db.view.stop_update();
+});
+
+/*========================================================
 			DATABASE
 ==========================================================*/
 
@@ -47,10 +54,10 @@ WC_KW.db.view = {
 		// set boolean flag listened by custom event
 		function update() {
 			$('#tBody').append(arrRows.shift());
-			if (arrRows.length > 0) {	 
+			if (arrRows.length > 0) {
 				_this.write_timer = setTimeout(function() {
 					update(); 
-					}, 90);
+					}, 200);
 			}
 		}
 		update();
@@ -224,18 +231,23 @@ WC_KW.db.controller = {
   // refresher trigger
 	do_search: (function () {
     $('#entry_refresh').on('click', function () {
-			$('#tBody').empty();
-			var form_data = $('#form_search').serialize();
-			WC_KW.db.model.controller('search', form_data);
 			// trigger stop update to stop reflow during updating process
 			// used to control update process in VIEW
 			$('#entry_refresh').trigger('stop_update');
-			
+			// clear table
+			$('#tBody').empty();
+			// serialize input
+			var form_data = $('#form_search').serialize();
+			// send input to model
+			WC_KW.db.model.controller('search', form_data);
 		});
 	}()),
 	// submit entries from edit entry form
 	do_edit: (function () {
 		$('#go_edit').on('click', function () {
+			// trigger stop update to stop reflow during updating process
+			// used to control update process in VIEW
+			$('#entry_refresh').trigger('stop_update');
 			var form_data = $('#form_edit_entry').serialize();
 			WC_KW.db.model.controller('edit', form_data);	
 		});
@@ -243,6 +255,9 @@ WC_KW.db.controller = {
 	// retrieve data from DB for editing
 	retrieve_for_edit: (function () {
 		$('#id_to_edit').on('blur', function () {
+			// trigger stop update to stop reflow during updating process
+			// used to control update process in VIEW
+			$('#entry_refresh').trigger('stop_update');
 			// do not submit the radio buttons to 
 			// avoid conflict when submitting entire form
 			// when updating Database
