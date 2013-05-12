@@ -18,6 +18,7 @@ class WC_LOGIN_model
 		}
 		// fetcher query function
 		public function fetch( $user_name, $pw ) {
+			
 			$sql_pw = "SELECT username, password, rights FROM users WHERE username = ?";
 			$user_pw = "";
 			$search_term = "{$user_name}";
@@ -28,7 +29,6 @@ class WC_LOGIN_model
 				$stmt->bind_result($username, $password, $rights);
 				$stmt->execute();
 				$stmt->store_result();
-				
 				while ( $stmt -> fetch() ) {
 					$user_pw = $password;
 					$this->rights = $rights;

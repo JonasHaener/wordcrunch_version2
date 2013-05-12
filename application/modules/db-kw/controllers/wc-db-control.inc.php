@@ -32,29 +32,29 @@ function WC_db_controller($inp)
 	
 		// search data
 		if (isset($inp['search'])) {	
-			$db = new WC_DB_fetch("localhost", "wordcrunch", "<88>>cru99**ncher", "wordcrunch", "mysqli", $inp['search']);
+			$db = new WC_DB_fetch("localhost", "", "", "wordcrunch", "mysqli", $inp['search']);
 		}
 		// create data
 		if (isset($inp['change_db']) && $inp['change_db'] === "new_entry") {
-			$db = new WC_DB_create("localhost", "wordcrunch", "<88>>cru99**ncher", "wordcrunch", "mysqli", $inp);
+			$db = new WC_DB_create("localhost", "", "", "wordcrunch", "wordcrunch", "mysqli", $inp);
 			//echo 'NEW';
 		}
 		// update data
 		if (isset($inp['change_db']) && $inp['change_db'] === "edit_entry" && isset($inp['id_to_edit']) && $inp['id_to_edit'] !== "") {
 				
-				$db = new WC_DB_updater("localhost", "wordcrunch", "<88>>cru99**ncher", "wordcrunch", "mysqli", $inp);
+				$db = new WC_DB_updater("localhost", "", "", "wordcrunch", "wordcrunch", "mysqli", $inp);
 				//echo 'UPDATE';
 		
 		}
 		// delete data
 		if (isset($inp['change_db']) && $inp['change_db'] === "delete_entry" && isset($inp['id_to_edit']) && $inp['id_to_edit'] !== "" ) {
-			$db = new WC_DB_delete("localhost", "wordcrunch", "<88>>cru99**ncher", "wordcrunch", "mysqli", $inp);	
+			$db = new WC_DB_delete("localhost", "", "", "wordcrunch", "wordcrunch", "mysqli", $inp);	
 		}
-		
 		// fetch data for editor form >> Must be last to avoid conflict
 		// !! checks if input is_numeric (if blank then it no numeric)
 		if (is_numeric($inp['id_to_edit']) && !isset($inp['change_db']) && $inp['change_db'] !== "") {
-			$db = new WC_DB_fetch("localhost", "jonasCanAll", "fridolin88", "wordcrunch", 'mysqli', $inp['id_to_edit']);
+			$db = new WC_DB_fetch("localhost", "", "", "wordcrunch", "wordcrunch", 'mysqli', $inp['id_to_edit']);
+			
 			//echo 'FETCH';
 		}
 		
