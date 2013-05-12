@@ -17,7 +17,7 @@ class WC_DB_connect
 		// construct
 		public function __construct($host, $user, $passw, $db, $connectionType) {		
 				if ($connectionType === 'mysqli') {
-					$this->conn = new mysqli("localhost", "jonasCanAll", "fridolin88", "wordcrunch") or die ('Cannot open database');
+					$this->conn = new mysqli("localhost", "wordcrunch", "<88>>cru99**ncher", "wordcrunch") or die ('Cannot open database');
 					// assign error in case
 					if ($this->conn->connect_errno) {
 						$this->err = "failed to connect:{$conn->connect_error}";
