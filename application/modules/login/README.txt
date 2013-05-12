@@ -19,4 +19,3 @@ passwords to accounts
 
 - type: admin
 - user: jonas
-– pw:	fridolin88 -> hashed $1$fy6C2cJN$0y0YG21wG/73madcM5PO61

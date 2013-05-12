@@ -18,7 +18,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 			<nav id="menu_navi" class="margin-bott-3_5em border-bott-thin-grey">
 				<ul>
 					<li class="border-right-grey backgr-grey-l">
-						<a href="" class="">Hello,&nbsp;<strong><?php echo $sess_user;?></strong></a>
+						<a href="" class="">Hello,&nbsp;<strong><?php echo $SESS_USER;?></strong></a>
 					</li>
 					<li class="border-right-grey backgr-grey-l backgr-win-purple-h">
 						<a href="logout.php" id="logout_button" class="center-text txt-white-h">Logout</a>
@@ -26,7 +26,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 					<li class="border-right-grey backgr-win-purple-h txt-white-h">
 						<a href="" id="keyword_button" class="center-text txt-white-h">Keywords</a>
 					</li>
-					<?php if($sess_rights > 1) { ?>
+					<?php if($SESS_RIGHTS > 1) { ?>
 					<li class="border-right-grey backgr-win-purple-h txt-white-h">
 						<a href="" id="keytext_button" class="center-text txt-white-h">Keytext</a>
 					</li>
@@ -41,7 +41,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 							<h2 id="menu_entry_displ" class="col-light-grey float-left margin-right-1-5em">Keyword search</h2>
 							<nav id="function_navi" class="float-left">
 									<ul class="float-left margin-bottom-1em">
-											<?php if($sess_rights !== 0) { ?>
+											<?php if($SESS_RIGHTS !== 0) { ?>
 											<li id="entry_edit" class="backgr-win-purple backgr-win-blue-h float-left div margin-right-025em"></li>
 											<?php } ?>
 											<li id="entry_refresh" class="backgr-win-purple backgr-win-blue-h float-left  margin-right-2em"></li>
@@ -61,7 +61,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 									</form>
 							</nav>
 							<!-- Hide inputs when editor rights are not met -->
-							<?php if($sess_rights !== 0) { ?>
+							<?php if($SESS_RIGHTS !== 0) { ?>
 							<form action="" id="form_edit_entry" name="form_edit_entry" class="float-left inl-block margin-bottom-2em padd-top-2em padd-bott-1em border-top-thin-grey border-bott-thin-grey">
 									<!--Radio button selection -->
 									
