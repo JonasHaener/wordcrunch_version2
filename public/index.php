@@ -11,7 +11,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 </head>
 <body>
 <!--index page container-->
-	<div id="index_module" class="">
+	<div class="index_module">
 		<!--header bar-->
 			<header class="header"></header>
 		<!--user bar-->

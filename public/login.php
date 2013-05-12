@@ -18,7 +18,7 @@ require_once("../application/modules/login/wc-session-class.inc.php");
 <link type="text/css" rel="stylesheet" href="css/wc-main.css">
 </head>
 <body>
-<div id="login_module" class="backgr-grey-l">
+<div class="login_module backgr-grey-l">
 		<div class="top_bar @backgr-win-blue backgr-win-purple"></div>
 		<div id="container">
 			<section id="login_page" class="border-thin-grey">
