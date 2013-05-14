@@ -33,7 +33,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 					<?php } ?>
 				</ul>
 			</nav>
-			<div id="spinner" class="ajax-load"></div>
+			<div id="spinner" class="js-spinner ajax-load"></div>
 		<!--main container-->
 			<div id="main_container" class="">
 					<!--working container-->		
@@ -42,63 +42,62 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 							<nav id="function_navi" class="float-left">
 									<ul class="float-left margin-bottom-1em">
 											<?php if($SESS_RIGHTS !== 0) { ?>
-											<li id="entry_edit" class="backgr-win-purple backgr-win-blue-h float-left div margin-right-025em"></li>
+											<li id="entry_edit" class="js-b-entry-edit backgr-win-purple backgr-win-blue-h float-left div margin-right-025em"></li>
 											<?php } ?>
-											<li id="entry_refresh" class="backgr-win-purple backgr-win-blue-h float-left  margin-right-2em"></li>
+											<li id="entry_refresh" class="js-b-refresh backgr-win-purple backgr-win-blue-h float-left  margin-right-2em"></li>
 									</ul>
 									<!-- form and search navigation-->
-									<form id="form_search" name="form_search" class="float-left inl-block" action="">
-											<input type="text" id="inp_search" list="search_list" class="inp-field margin-right-1em inl-block" name="search" placeholder="Enter keyword / comma seperated IDs here">	
+									<form id="form_search" name="form_search" class="js-search-form float-left inl-block" action="">
+											<input type="text" id="inp_search" list="search_list" class="js-f-search-field inp-field margin-right-1em inl-block" name="search" placeholder="Enter keyword / comma seperated IDs here">	
                       <label for="dtl_de" class="dtl_label">DE:&nbsp;</label>
                       <input type="radio" id="dtl_de" name="dtl_lang" checked value="german">
                       <label for="dtl_en" class="dtl_label">&nbsp;EN:&nbsp;</label>
                       <input type="radio" id="dtl_en" name="dtl_lang" value="english">
 											<label class="ids_label">&nbsp;&nbsp;IDS:&nbsp;</label>
 											<input type="text" class="ids_used" placeholder="&nbsp;&nbsp;Used IDs appear here">
-											<datalist id="search_list">
+											<datalist id="search_list" class="js-dl-searchlist">
 												<!--<option value="filled from DB"></option>-->
 											</datalist>
 									</form>
 							</nav>
 							<!-- Hide inputs when editor rights are not met -->
 							<?php if($SESS_RIGHTS !== 0) { ?>
-							<form action="" id="form_edit_entry" name="form_edit_entry" class="float-left inl-block margin-bottom-2em padd-top-2em padd-bott-1em border-top-thin-grey border-bott-thin-grey">
+							<form action="" id="form_edit_entry" name="form_edit_entry" class="js-f-editor float-left inl-block margin-bottom-2em padd-top-2em padd-bott-1em border-top-thin-grey border-bott-thin-grey">
 									<!--Radio button selection -->
 									
-									<input type="radio" checked name="change_db" value="edit_entry">&nbsp;&nbsp;<span class="margin-right-025em">Edit</span>&nbsp;&nbsp;
+									<input type="radio" id="radio_edit_entry" checked name="change_db" value="edit_entry">&nbsp;&nbsp;<span class="margin-right-025em">Edit</span>&nbsp;&nbsp;
 									<input type="radio" name="change_db"  value="new_entry" a>&nbsp;&nbsp;<span class="margin-right-025em">New</span>
 									<input type="radio" name="change_db"  value="delete_entry">&nbsp;&nbsp;<span class="margin-right-025em">Delete</span>&nbsp;&nbsp;
 									<!--END Radio button-->
 									
-									<input type="button" id="go_edit" name="go_edit" class="inl-block margin-right-1em margin-bottom-1em" value="Update"><br><br>
+									<input type="button" id="go_edit" name="go_edit" class="js-b-go-edit inl-block margin-right-1em margin-bottom-1em" value="Update"><br><br>
 									
 									<!--input fields for editing-->
 									<span class="language_label">ID:&nbsp;</span>
-									<input type="text" id="id_to_edit" class="inp-field inl-block margin-right-1em margin-bottom-1em" name="id_to_edit" placeholder="Enter ID here">
+									<input type="text" id="id_to_edit" class="js-f-edit-id inp-field inl-block margin-right-1em margin-bottom-1em" name="id_to_edit" placeholder="Enter ID here">
 									<span class="language_label">DE:&nbsp;</span>
-									<input type="text" id="edit_german" class="inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_german" placeholder="New German here">
+									<input type="text" id="edit_german" class="js-f-edit-german inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_german" placeholder="New German here">
 									<span class="language_label">EN:&nbsp;</span>
-									<input type="text" id="edit_english" class="inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_english" placeholder="New English here">
+									<input type="text" id="edit_english" class="js-f-edit-english inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_english" placeholder="New English here">
 									<br>
 									<span class="language_label">FR:&nbsp;</span>
-									<input type="text" id="edit_french" class="inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_french" placeholder="New French here">
+									<input type="text" id="edit_french" class="js-f-edit-french inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_french" placeholder="New French here">
 									
 									<span class="language_label">NL:&nbsp;</span>
-									<input type="text" id="edit_dutch" class="inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_dutch" placeholder="New Dutch here">
+									<input type="text" id="edit_dutch" class="js-f-edit-dutch inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_dutch" placeholder="New Dutch here">
 									<span class="language_label">JP:&nbsp;</span>
-									<input type="text" id="edit_japanese" class="inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_japanese" placeholder="New Japanese here">
+									<input type="text" id="edit_japanese" class="js-f-edit-japanese inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_japanese" placeholder="New Japanese here">
 									<br>
 									<span class="language_label">IT:&nbsp;</span>
-									<input type="text" id="edit_italian" class="inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_italian" placeholder="New Italian here">
+									<input type="text" id="edit_italian" class="js-f-edit-italian inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_italian" placeholder="New Italian here">
 									<span class="language_label">ES:&nbsp;</span>
-									<input type="text" id="edit_spanish" class="inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_spanish" placeholder="New Spanish here">
+									<input type="text" id="edit_spanish" class="js-f-edit-spanish inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_spanish" placeholder="New Spanish here">
 									<span class="language_label">CM:&nbsp;</span>
-									<input type="text" id="edit_comments" class="inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_comments" placeholder="Comments here">
+									<input type="text" id="edit_comments" class="js-f-edit-comments inp-field inl-block margin-right-1em margin-bottom-1em" name="edit_comments" placeholder="Comments here">
 									
 							</form>
 							<?php }; ?>
 							<table class="" id="result">
-									
 									<thead >
 											<tr class="">
 													<th class="backgr-win-orange">ID</th>
@@ -113,7 +112,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 													<th class="backgr-win-blue-shade-m">Updated</th>
 											</tr>
 									</thead>
-									<tbody id="tBody">
+									<tbody id="tBody" class="js-table-body">
 											<tr>
 													<td>Result will be displayed here</td>
 											</tr>
@@ -126,7 +125,7 @@ require_once("../application/modules/login/wc-check-session.inc.php");
 							</div>	
 							<br>
 							<footer class="">
-								<p>Today: <span id="date"></span></p>	
+								<p>Today: <span id="date" class="js-date"></span></p>	
 							</footer>
 							<!--<div id="user_feedback" class="gradient-yellow-rgb">Hell user feedack</div>-->	
 					</div>

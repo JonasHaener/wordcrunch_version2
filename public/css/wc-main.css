@@ -410,6 +410,18 @@ table tr td span {
 		color: #A0A0A0;
 }	
 
+.index_module
+.res_id {
+	text-decoration: underline;
+}
+
+.index_module
+.res_id:hover {
+	color: #33F;
+	font-weight: bold;
+}
+
+
 .index_module 
 .submit {
 		height: 3em;

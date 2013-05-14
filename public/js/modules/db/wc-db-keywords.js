@@ -35,12 +35,12 @@ WC_KW.db.view = {
 	ctrl_update: function(bool) {
 		if (bool === true) {
 			this.write_timer = true;
-			$('#tBody').empty();
+			$('.js-table-body').empty();
 		} else if (bool === false) {
 			this.write_timer = false;
 		}
 	},
-	container: $('#tBody'),
+	container: $('.js-table-body'),
 	ids_container: $('.ids_used'),
 	user_message: $('<div id="user_feedback" class=""></div>'),
 	message_pos: $('body'),
@@ -49,10 +49,10 @@ WC_KW.db.view = {
 		return confirm('Do you know what you are doing?');
 	},
 	show_spinner: function() { 
-		$('#spinner').show();	
+		$('.js-spinner').show();	
 	},
 	hide_spinner: function() { 
-		$('#spinner').hide();	
+		$('.js-spinner').hide();	
 	},
 	// write results to results field
 	update_content: function (arrData) {
@@ -61,13 +61,13 @@ WC_KW.db.view = {
 		// set boolean flag listened by custom event
 		function update() {
 			if (arrRows.length > 0 && _this.write_timer === true) {
-				$('#tBody').trigger('view-complete',[ false ]);
-				$('#tBody').append(arrRows.shift());
+				$('.js-table-body').trigger('view-complete',[ false ]);
+				$('.js-table-body').append(arrRows.shift());
 				console.log('arrRows.length timer update: ', arrRows.length);
 				console.log('rows are timeout updated');
 				setTimeout(function() { update(); }, 150);
 			} else {
-				 $('#tBody').trigger('view-complete',[ true ]);	
+				 $('.js-table-body').trigger('view-complete',[ true ]);	
 			}
 		}
 		update();
@@ -91,15 +91,15 @@ WC_KW.db.view = {
 	},
 	// update input fields
 	update_for_edit: function (data) {
-		$('#id_to_edit').val(data.id);
-		$('#edit_german').val(data.german);
-		$('#edit_english').val(data.english);
-		$('#edit_french').val(data.french);
-		$('#edit_dutch').val(data.dutch);
-		$('#edit_spanish').val(data.spanish);
-		$('#edit_italian').val(data.italian);
-		$('#edit_japanese').val(data.japanese);
-		$('#edit_comments').val(data.comments);
+		$('.js-f-edit-id').val(data.id);
+		$('.js-f-edit-german').val(data.german);
+		$('.js-f-edit-english').val(data.english);
+		$('.js-f-edit-french').val(data.french);
+		$('.js-f-edit-dutch').val(data.dutch);
+		$('.js-f-edit-spanish').val(data.spanish);
+		$('.js-f-edit-italian').val(data.italian);
+		$('.js-f-edit-japanese').val(data.japanese);
+		$('.js-f-edit-comments').val(data.comments);
 	}
 };
 /**---------------------------
@@ -246,31 +246,46 @@ WC_KW.db.controller = {
 	do_search: function () {
 		var _this = this;
 		//var clicked = 0
-    $('#entry_refresh').on('click', function () {
+    $('.js-b-refresh').on('click', function () {
 			if (_this.view_updated === true) {
-				$('#entry_refresh').trigger('start-update',[ true ]);
-				var form_data = $('#form_search').serialize();
+				$('.js-b-refresh').trigger('start-update',[ true ]);
+				var form_data = $('.js-search-form').serialize();
 				// send input to model
 				WC_KW.db.model.controller('search', form_data);
 			} else if (_this.view_updated === false) {
-				$('#entry_refresh').trigger('start-update',[ false ]);
+				$('.js-b-refresh').trigger('start-update',[ false ]);
 			}
+		});
+	},
+	row_edit: function() {
+		$('.js-table-body').on('click', 'a', function (e) {
+			var id = e.currentTarget.id;
+			// check editor radio button
+			$('.js-f-editor input[value=edit_entry]').prop('checked', "checked");
+			// control form fields for editor mode
+			WC_KW.forms.control_fields("edit_entry");
+			// pass value to id form field // / trigger search
+			$('.js-f-edit-id').val(id).blur();
+			// open form fields
+			$('.js-f-editor').slideDown(1000);
+			// prevent link follow and event bubble
+			return false;
 		});
 	},
 	// submit entries from edit entry form
 	do_edit: function () {
-		$('#go_edit').on('click', function () {
-			var form_data = $('#form_edit_entry').serialize();
+		$('.js-b-go-edit').on('click', function () {
+			var form_data = $('.js-f-editor').serialize();
 			WC_KW.db.model.controller('edit', form_data);	
 		});
 	},
 	// retrieve data from DB for editing
 	retrieve_for_edit: function () {
-		$('#id_to_edit').on('blur', function () {
+		$('.js-f-edit-id').on('blur', function () {
 			// do not submit the radio buttons to 
 			// avoid conflict when submitting entire form
 			// when updating Database
-			var form_data = $('#form_edit_entry > input')
+			var form_data = $('.js-f-editor > input')
 											.not('input[type=radio]')
 											.serialize();
 			WC_KW.db.model.controller('retrieve', form_data);
@@ -278,8 +293,10 @@ WC_KW.db.controller = {
 	},
 	init: function() {
 		this.do_search();
+		this.row_edit();
 		this.do_edit();	
 		this.retrieve_for_edit();
+		
 	}
 };
 WC_KW.db.controller.init();

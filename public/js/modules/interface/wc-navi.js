@@ -17,14 +17,14 @@ WC_KW.forms = {
 		
 		// show hide form
 		show_hide: function () {
-			$('#entry_edit, #entry_delete').on('click', function() {
-				$('#form_edit_entry').slideToggle(350);
+			$('.js-b-entry-edit').on('click', function() {
+				$('.js-f-editor').slideToggle(350);
 			});
 	},
 	
 	// disable, activate form fields
 	control_fields: function (field_value) {
-			var inp_fields = $('#form_edit_entry input[type=text]');
+			var inp_fields = $('.js-f-editor input[type=text]');
 			//clear all fields
 			inp_fields.val("");
 			// control entry fields
@@ -33,7 +33,7 @@ WC_KW.forms = {
 					inp_fields
 					 .removeProp('disabled')
 					 .removeClass('hide_field')
-					 .filter('#id_to_edit')
+					 .filter('.js-f-edit-id')
 					 // hide id field
 					 .addClass('hide_field');
 				break;
@@ -47,7 +47,7 @@ WC_KW.forms = {
 				case "delete_entry":		
 					inp_fields
 					 .removeClass('hide_field')
-					 .not('#id_to_edit')
+					 .not('.js-f-edit-id')
 					 .prop('disabled', 'disabled');
 				break;							
 			}
@@ -56,7 +56,7 @@ WC_KW.forms = {
 	// edit field control radio buttons edit, delete, new
 	edit_entry: function () {
 			var _this = this;
-			$('#form_edit_entry').on('change', 'input[type=radio]', function () {
+			$('.js-f-editor').on('change', 'input[type=radio]', function () {
 				var field_value = $(this).prop('value');
 				_this.control_fields(field_value);
 			});
@@ -65,7 +65,7 @@ WC_KW.forms = {
 	// input field cleaner
 	clean_input_fields: function () {
 			// cleam search field
-			$('#inp_search').on('change', function() {
+			$('.js-f-search-field').on('change', function() {
 				var txt = $(this).val();
 				// true cleans within the string too
 				txt = WC_A.helper.trim_string(txt, true);
@@ -74,7 +74,7 @@ WC_KW.forms = {
 				// reassign text to input field
 				$(this).val(txt);
 			});
-			$('#form_edit_entry > input').on('change', function() {
+			$('.js-f-editor > input').on('change', function() {
 				var txt = $(this).val();
 				// false cleans left, right
 				// true cleans within the string too
@@ -113,7 +113,7 @@ WC_A.dates = {
 		write_date: function() {
 			//console.log('time updated');
 			var d = new Date();
-			$('#date').html(d.toDateString());
+			$('.js-date').html(d.toDateString());
 			// update date every hour
 			setTimeout(WC_A.dates.write_date, 60000);
 		}

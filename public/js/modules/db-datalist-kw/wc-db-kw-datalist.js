@@ -67,7 +67,7 @@ WC_KW.datalist.Controller = function() {
 WC_KW.datalist.View = function() {
 	this.update = function(result) {
 		if (result !== "") { 
-			$('#search_list').html(result);
+			$('.js-dl-searchlist').html(result);
 		}
 	}
 };

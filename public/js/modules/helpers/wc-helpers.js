@@ -57,7 +57,8 @@ WC_A.helper.prep_table = function (data) {
 		for (a = 0; a < arrRes.length; a += 1) {
 			// get current position
 				b = arrRes[a];
-				arrSubRows.push("<tr class='res_row'>"+ "<td class='row_id'>" + b['id'] + "</td>" +
+				arrSubRows.push("<tr class='res_row'>"+ "<td class='row_id'>" + 
+					"<a id='" + b['id'] + "' href='' class='res_id'>" + b['id'] + "</a>" + "</td>" +
 					"<td>" + "<span>["+ b['id']+ "]</span>" + b['german'] + "</td>" + 
 					"<td>" + "<span>["+ b['id']+ "]</span>" + b['english'] + "</td>" + 
 					"<td>" + "<span>["+ b['id']+ "]</span>" + b['french'] + "</td>" + 
