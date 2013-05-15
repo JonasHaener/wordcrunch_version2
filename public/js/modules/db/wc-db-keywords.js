@@ -260,6 +260,8 @@ WC_KW.db.controller = {
 	row_edit: function() {
 		$('.js-table-body').on('click', 'a', function (e) {
 			var id = e.currentTarget.id;
+			// scroll window to top to reveal editor form
+			$('body, html').animate({ scrollTop:0 }, 100);
 			// check editor radio button
 			$('.js-f-editor input[value=edit_entry]').prop('checked', "checked");
 			// control form fields for editor mode
@@ -267,7 +269,7 @@ WC_KW.db.controller = {
 			// pass value to id form field // / trigger search
 			$('.js-f-edit-id').val(id).blur();
 			// open form fields
-			$('.js-f-editor').slideDown(1000);
+			$('.js-f-editor').slideDown(100);
 			// prevent link follow and event bubble
 			return false;
 		});
