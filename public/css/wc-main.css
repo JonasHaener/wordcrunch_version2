@@ -223,7 +223,8 @@ h2 {
 .header {
 		height: 5.5em;
 		width: 100%;
-		background: #02aeef url(../images/layout/wordcrunch-logo.png) no-repeat 2em center;
+		background: #953cac url(../images/layout/wordcrunch-logo.png) no-repeat 2em center; /*#02aeef light blue*/
+		
 }
 
 /********************** top navi ***********************/
