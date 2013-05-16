@@ -306,6 +306,7 @@ h2 {
 		width: 25em;
 		text-indent: 1em;
 }
+
 .index_module
 #id_to_edit {
 		border: solid 2px #393;
@@ -397,11 +398,11 @@ th {
 }
 .index_module 
 tr:nth-of-type(2n+1) {
-		background: #e1c8e8;
+		background: rgb(223, 195, 231);
 }
 .index_module 
 tr:nth-of-type(2n+2) {
-		background: #E0E0E0;
+		background: #EAEAEA;
 }	
 
 /* style id [ ] within td tags */
