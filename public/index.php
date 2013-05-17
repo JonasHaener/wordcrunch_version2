@@ -1,5 +1,8 @@
 <?php
-require_once("../application/modules/login/wc-check-session.inc.php");
+// absolute path
+require_once("../config_global/wc-abs-path.inc.php");
+// check session
+require_once($ABS_PATH."application/modules/login/wc-check-session.inc.php");
 ?> 
 <!DOCTYPE HTML>
 <html class="cssgradients">

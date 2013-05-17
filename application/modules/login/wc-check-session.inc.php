@@ -11,4 +11,5 @@ if (!isset($_SESSION['authenticated'])) {
 	$SESS_AUTH 		= $_SESSION['authenticated'];
 	$SESS_USER		= $_SESSION['username'];
 	$SESS_RIGHTS	= $_SESSION['rights_level'];
+	$SESS_USR_ID	= $_SESSION['id'];
 }

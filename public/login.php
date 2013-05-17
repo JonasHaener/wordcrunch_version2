@@ -1,14 +1,8 @@
 <?php
-// DB connection
-require_once('../application/modules/helpers/wc-db-class-connect.inc.php');
-// PW hashing library
-require_once('../library/password_compat/lib/password.php');
-// login controller class
-require_once('../application/modules/login/controllers/wc-login-class-control.inc.php');
+// absolute path
+require_once("../config_global/wc-abs-path.inc.php");
 // login logic
-require_once("../application/modules/login/wc-login-logic.inc.php");
-// session
-require_once("../application/modules/login/wc-session-class.inc.php");
+require_once($ABS_PATH.'application/modules/login/wc-login-logic.inc.php');
 ?>
 <!DOCTYPE HTML>
 <html class="cssgradients">

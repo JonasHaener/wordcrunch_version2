@@ -10,8 +10,10 @@
 /**---------------------------
 		Dependencies
  ---------------------------**/
-require_once('../helpers/wc-db-class-connect.inc.php');
-require_once('models/wc-db-kw-datalist-fetch.inc.php');
+// asolute path
+require_once("../../../config_global/wc-abs-path.inc.php");
+require_once($ABS_PATH.'application/modules/helpers/wc-db-class-connect.inc.php');
+require_once($ABS_PATH.'application/modules/db-datalist-kw/models/wc-db-kw-datalist-fetch.inc.php');
  
 function WC_datalist_logic($data_type, $dtl_lang) {
 	

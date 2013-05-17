@@ -11,6 +11,7 @@ class WC_LOGIN_model
 		public $res;
 		public $err = "";
 		public $user;
+		public $user_id;
 		public $rights;
 		// constructor
 		public function __construct( $conn ) {
@@ -18,14 +19,14 @@ class WC_LOGIN_model
 		}
 		// fetcher query function
 		public function fetch( $user_name, $pw ) {
-			$sql_pw = "SELECT username, password, rights FROM users WHERE username = ?";
+			$sql_pw = "SELECT id, username, password, rights FROM users WHERE username = ?";
 			$user_pw = "";
 			$search_term = "{$user_name}";
 			$stmt = $this->conn->stmt_init();
 			
 			if ( $stmt->prepare($sql_pw) ) {
 				$stmt->bind_param('s', $search_term);
-				$stmt->bind_result($username, $password, $rights);
+				$stmt->bind_result($id, $username, $password, $rights);
 				$stmt->execute();
 				$stmt->store_result();
 				
@@ -33,6 +34,7 @@ class WC_LOGIN_model
 					$user_pw = $password;
 					$this->rights = $rights;
 					$this->user = $username;
+					$this->user_id = $id;
 					
 				}
 				// free results
@@ -73,6 +75,7 @@ class WC_LOGIN_view
 		public $controller;
 		public $user;
 		public $rights;
+		public $user_id;
 		// constructor
 		public function __construct($model, $controller) {
 			$this->model 			= $model;
@@ -80,6 +83,7 @@ class WC_LOGIN_view
 			$this->error 			= $model->err;
 			$this->user 			= $model->user;
 			$this->rights			= $model->rights;
+			$this->user_id		= $model->user_id;
 		}
 		// fetcher query function
 		public function get_login() {
@@ -95,6 +99,9 @@ class WC_LOGIN_view
 		}
 		public function get_rights() {
 			return $this->rights;
+		}
+		public function get_user_id() {
+			return $this->user_id;
 		}
 }
 

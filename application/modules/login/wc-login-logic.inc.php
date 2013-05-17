@@ -5,6 +5,17 @@
  *
  *
  */
+/**---------------------------
+		Dependencies
+ ---------------------------**/ 
+// DB connection
+require_once($ABS_PATH."application/modules/helpers/wc-db-class-connect.inc.php");
+// PW hashing library
+require_once($ABS_PATH.'library/password_compat/lib/password.php');
+// login controller class
+require_once($ABS_PATH.'application/modules/login/controllers/wc-login-class-control.inc.php');
+ 
+ 
 $LOGIN_ERROR = "";
 $session;
 
@@ -33,6 +44,9 @@ function WC_login_logic( $user_input, &$error, &$session ) {
 		$_SESSION['username'] = $view->get_user();
 		// access rights level 0, 1 or 2
 		$_SESSION['rights_level'] = $view->get_rights();
+		// access rights level 0, 1 or 2
+		$_SESSION['id'] = $view->get_user_id();
+		// regenerate session
 		session_regenerate_id();
 		// redirect to main page
 		header("Location:{$REDIRECT}");

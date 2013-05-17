@@ -7,12 +7,14 @@
 /**---------------------------
 		Dependencies
  ---------------------------**/
-require_once('../../helpers/wc-db-class-connect.inc.php');
-require_once('../models/wc-db-class-create.inc.php');
-require_once('../models/wc-db-class-fetch.inc.php');
-require_once('../models/wc-db-class-update.inc.php'); //blocking
-require_once('../models/wc-db-class-delete.inc.php');
-require_once('../view/wc-db-view.inc.php');
+// abs path
+require_once("../../../../config_global/wc-abs-path.inc.php");
+require_once($ABS_PATH.'application/modules/helpers/wc-db-class-connect.inc.php');
+require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-create.inc.php');
+require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-fetch.inc.php');
+require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-update.inc.php'); //blocking
+require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-delete.inc.php');
+require_once($ABS_PATH.'application/modules/db-kw/view/wc-db-view.inc.php');
 
 
 // AJAX error testing
@@ -25,6 +27,7 @@ require_once('../view/wc-db-view.inc.php');
 		Controller
  ---------------------------**/
 //JSON
+
 function WC_db_controller($inp) 
 {	
 		// database connection
