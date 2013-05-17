@@ -10,7 +10,9 @@ require_once($ABS_PATH."application/modules/login/wc-check-session.inc.php");
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>search|wordcrunch</title>
 <link type="text/css" rel="stylesheet" href="css/wc-main.css">
-<script></script>
+<script>
+//	var usr = { name: <?php echo $SESS_USER; ?>, usrid: <?php echo $SESS_USR_ID; ?> };
+</script>
 </head>
 <body>
 <!--index page container-->

@@ -1,26 +1,27 @@
 <?php
+session_start();
+//ob_start();
 /*
  * DB CONTROLLER
  *
  */
-
 /**---------------------------
 		Dependencies
  ---------------------------**/
 // abs path
 require_once("../../../../config_global/wc-abs-path.inc.php");
 require_once($ABS_PATH.'application/modules/helpers/wc-db-class-connect.inc.php');
-require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-create.inc.php');
+require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-create.inc.php'); //blocking MySQL
 require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-fetch.inc.php');
-require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-update.inc.php'); //blocking
-require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-delete.inc.php');
+require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-update.inc.php'); //blocking MySQL
+require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-delete.inc.php'); //blocking MySQL
 require_once($ABS_PATH.'application/modules/db-kw/view/wc-db-view.inc.php');
 
 
 // AJAX error testing
-// sleep(5);
-// header("HTTP/1.0 404 Not Found");
-// exit();
+//sleep(1);
+//header("HTTP/1.0 404 Not Found");
+//exit();
 
 
 /**---------------------------

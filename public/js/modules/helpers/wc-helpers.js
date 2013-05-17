@@ -127,6 +127,7 @@ WC_A.helper.Ajax = function (config) {
 						},
 						// success function
 						success: function (data) {
+							
 							stop  = Date.now();
 							console.log('AJAX till complete is called: ', (stop-start) + " ms");
 							// send call type and data to callback

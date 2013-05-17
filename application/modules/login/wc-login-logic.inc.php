@@ -48,6 +48,7 @@ function WC_login_logic( $user_input, &$error, &$session ) {
 		$_SESSION['id'] = $view->get_user_id();
 		// regenerate session
 		session_regenerate_id();
+		ob_end_flush();
 		// redirect to main page
 		header("Location:{$REDIRECT}");
 		exit;
