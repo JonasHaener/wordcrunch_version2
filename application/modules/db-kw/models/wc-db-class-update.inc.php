@@ -14,9 +14,11 @@ class WC_DB_updater
 		public $db_res = array();
 		private $db_conn;
 		private $stmt;
+		private $usr_id;
 		// constructor
-		public function __construct($host, $user, $passw, $db, $connectionType, $upd)
+		public function __construct($host, $user, $passw, $db, $connectionType, $upd, $user_id)
 		{
+			$this->usr_id = (int)$user_id;
 			// call DB connection class establish connection
 			$connected = new WC_DB_connect($host, $user, $passw, $db, $connectionType);
 			// assign connection
@@ -47,7 +49,8 @@ class WC_DB_updater
 								japanese	= ?,
 								italian	= ?,
 								spanish	= ?,
-								comments	= ?
+								comments	= ?,
+								user_id = ?
 								WHERE id	= ?";
 								
 				//prepare statement	
@@ -55,7 +58,7 @@ class WC_DB_updater
 				if ($stmt->prepare( $sql_term )) {
 					//var_dump($stmt);
 					$stmt->bind_param(
-							'ssssssssi',
+							'ssssssssii',
 							$upd['edit_german'],
 							$upd['edit_english'], // string
 							$upd['edit_french'], // string
@@ -64,6 +67,7 @@ class WC_DB_updater
 							$upd['edit_italian'], // string
 							$upd['edit_spanish'], // string
 							$upd['edit_comments'], // string
+							$this->usr_id,
 							$upd['id_to_edit'] // (id) integer
 							);
 							

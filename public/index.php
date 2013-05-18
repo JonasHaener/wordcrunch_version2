@@ -11,7 +11,6 @@ require_once($ABS_PATH."application/modules/login/wc-check-session.inc.php");
 <title>search|wordcrunch</title>
 <link type="text/css" rel="stylesheet" href="css/wc-main.css">
 <script>
-//	var usr = { name: <?php echo $SESS_USER; ?>, usrid: <?php echo $SESS_USR_ID; ?> };
 </script>
 </head>
 <body>
@@ -46,7 +45,7 @@ require_once($ABS_PATH."application/modules/login/wc-check-session.inc.php");
 							<h2 id="menu_entry_displ" class="col-light-grey float-left margin-right-1-5em">Keyword search</h2>
 							<nav id="function_navi" class="float-left">
 									<ul class="float-left margin-bottom-1em">
-											<?php if($SESS_RIGHTS !== 0) { ?>
+											<?php if($SESS_RIGHTS > 0) { ?>
 											<li id="entry_edit" class="js-b-entry-edit backgr-win-purple backgr-win-blue-h float-left div margin-right-025em"></li>
 											<?php } ?>
 											<li id="entry_refresh" class="js-b-refresh backgr-win-purple backgr-win-blue-h float-left  margin-right-2em"></li>

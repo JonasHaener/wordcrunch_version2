@@ -13,9 +13,11 @@ class WC_DB_create
 		public $db_res = array();
 		private $db_conn;
 		private $stmt;
+		private $usr_id;
 		// constructor
-		public function __construct($host, $user, $passw, $db, $connectionType, $update)
+		public function __construct($host, $user, $passw, $db, $connectionType, $update, $user_id)
 		{
+			$this->usr_id = (int)$user_id;
 			// call DB connection class establish connection
 			$connected = new WC_DB_connect($host, $user, $passw, $db, $connectionType);
 			// assign connection
@@ -35,13 +37,13 @@ class WC_DB_create
 				// sql query for term search
 				// id > auto_increment !!
 				$sql_lock = "LOCK TABLES keywords WRITE";
-				$sql_term = "INSERT INTO keywords (german,english,french,dutch,japanese,italian,spanish,comments)
-				VALUES(?,?,?,?,?,?,?,?)";
+				$sql_term = "INSERT INTO keywords (german,english,french,dutch,japanese,italian,spanish,comments,user_id)
+				VALUES(?,?,?,?,?,?,?,?,?)";
 				// if query yields results execute search			
 				if ($stmt->prepare( $sql_term )) {
 					//var_dump($stmt);
 					$stmt->bind_param(
-							'ssssssss',
+							'ssssssssi',
 							$insert['edit_german'],
 							$insert['edit_english'], // string
 							$insert['edit_french'], // string
@@ -49,7 +51,8 @@ class WC_DB_create
 							$insert['edit_japanese'], // string
 							$insert['edit_italian'], // string
 							$insert['edit_spanish'], // string
-							$insert['edit_comments'] // string
+							$insert['edit_comments'], // string
+							$this->usr_id
 							);
 					$this->db_conn->query($sql_lock);
 					$stmt->execute();
