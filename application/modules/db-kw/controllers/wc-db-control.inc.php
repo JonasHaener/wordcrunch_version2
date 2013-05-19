@@ -9,7 +9,9 @@ session_start();
 		Dependencies
  ---------------------------**/
 // abs path
-require_once("../../../../config_global/wc-abs-path.inc.php");
+
+// absolute path included with wc-ajax-kw.php from public folder
+//require_once("../../../../config_global/wc-abs-path.inc.php");
 require_once($ABS_PATH.'application/modules/helpers/wc-db-class-connect.inc.php');
 require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-create.inc.php'); //blocking MySQL
 require_once($ABS_PATH.'application/modules/db-kw/models/wc-db-class-fetch.inc.php');

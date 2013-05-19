@@ -255,7 +255,8 @@ h2 {
 }
 .index_module 
 #menu_navi li:nth-of-type(1) a {
-	padding-left: 2em;	
+	margin-left: 2em;
+	margin-right: 2em;	
 }
 .index_module 
 #menu_navi li:nth-of-type(1) a:hover {

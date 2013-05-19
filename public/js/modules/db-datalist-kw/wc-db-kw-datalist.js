@@ -17,7 +17,7 @@ WC_KW.datalist = {};
  ---------------------------**/
 WC_KW.datalist.Model = function() {
 	// write datalist
-	this.url = '../application/modules/db-datalist-kw/wc-kw-datalist-logic.inc.php';
+	this.url = 'wc-ajax-dtl-kw.php';
 	this.write_datalist = function(res_arr) {
 			var a, dtl = "";
 			// res_arr is Array

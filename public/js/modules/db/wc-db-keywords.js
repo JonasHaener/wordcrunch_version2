@@ -216,7 +216,7 @@ WC_KW.db.model = {
 			{ 
 						'call_type' 	: call_type, 
 						'data'				: form_data,
-						'url'					:	'../application/modules/db-kw/controllers/wc-db-control.inc.php',
+						'url'					:	'wc-ajax-kw.php',
 						'type'				:	'POST',
 						'attempts'		:	3,
 						'delay'				:	3000,
