@@ -11,12 +11,12 @@
 		Dependencies
  ---------------------------**/
 // asolute path
-require_once("../../../config_global/wc-abs-path.inc.php");
 require_once($ABS_PATH.'application/modules/helpers/wc-db-class-connect.inc.php');
 require_once($ABS_PATH.'application/modules/db-datalist-kw/models/wc-db-kw-datalist-fetch.inc.php');
+
+
  
 function WC_datalist_logic($data_type, $dtl_lang) {
-	
 	// db connection
 	$db = new WC_DB_connect("localhost", "wordcrunch", "<88>>cru99**ncher", "wordcrunch", "mysqli");
 	// call model and pass db connection
@@ -34,4 +34,3 @@ function WC_datalist_logic($data_type, $dtl_lang) {
 	echo $view->get_result();
 }
 WC_datalist_logic($_POST['data_type'], $_POST['dtl_lang']);
-

@@ -187,6 +187,7 @@ WC_A.helper.Ajax_dtl = function (m,v,c) {
 						// success function
 						success: function (data) {
 							// send call type and data to callback
+							console.log('dtl-data: ', data);
 							_this.view.update( _this.model.control(data) );
 						},
 						// error handling function
