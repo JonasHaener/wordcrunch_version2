@@ -245,7 +245,7 @@ WC_KW.db.controller = {
 	do_search: function () {
 		var _this = this;
 		//var clicked = 0
-    $('.js-b-refresh').on('click', function () {
+    $('.js-search-form').on('submit', function (e) {
 			if (_this.view_updated === true) {
 				$('.js-b-refresh').trigger('start-update',[ true ]);
 				var form_data = $('.js-search-form').serialize();
@@ -254,6 +254,7 @@ WC_KW.db.controller = {
 			} else if (_this.view_updated === false) {
 				$('.js-b-refresh').trigger('start-update',[ false ]);
 			}
+			e.preventDefault();
 		});
 	},
 	row_edit: function() {

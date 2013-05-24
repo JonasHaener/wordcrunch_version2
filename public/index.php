@@ -44,21 +44,19 @@ require_once($ABS_PATH."application/modules/login/wc-check-session.inc.php");
 					<div id="work_container" class="backgr-win-white border-thin-grey float-left">
 							<h2 id="menu_entry_displ" class="col-light-grey float-left margin-right-1-5em">Keyword search</h2>
 							<nav id="function_navi" class="float-left">
-									<ul class="float-left margin-bottom-1em">
-											<?php if($SESS_RIGHTS > 0) { ?>
-											<li id="entry_edit" class="js-b-entry-edit backgr-win-purple backgr-win-blue-h float-left div margin-right-025em"></li>
+									<form id="form_search" name="form_search" class="js-search-form float-left inl-block">
+                  		<?php if($SESS_RIGHTS > 0) { ?>
+											<button id="entry_edit" class="js-b-entry-edit button backgr-win-purple backgr-win-blue-h float-left margin-right-025em" type="button"></button>
 											<?php } ?>
-											<li id="entry_refresh" class="js-b-refresh backgr-win-purple backgr-win-blue-h float-left  margin-right-2em"></li>
-									</ul>
+											<button id="entry_refresh" class="js-b-refresh button backgr-win-purple backgr-win-blue-h float-left margin-right-025em" name="submit" type="submit"></button>
 									<!-- form and search navigation-->
-									<form id="form_search" name="form_search" class="js-search-form float-left inl-block" action="">
 											<input type="text" id="inp_search" list="search_list" class="js-f-search-field inp-field margin-right-1em inl-block" name="search" placeholder="Enter keyword / comma seperated IDs here">	
                       <label for="dtl_de" class="dtl_label">DE:&nbsp;</label>
                       <input type="radio" id="dtl_de" name="dtl_lang" checked value="german">
                       <label for="dtl_en" class="dtl_label">&nbsp;EN:&nbsp;</label>
                       <input type="radio" id="dtl_en" name="dtl_lang" value="english">
 											<label class="ids_label">&nbsp;&nbsp;IDS:&nbsp;</label>
-											<input type="text" class="ids_used" placeholder="&nbsp;&nbsp;Used IDs appear here">
+											<input type="text" class="ids_used inp-field" placeholder="&nbsp;&nbsp;Used IDs appear here">
 											<datalist id="search_list" class="js-dl-searchlist">
 												<!--<option value="filled from DB"></option>-->
 											</datalist>
@@ -125,7 +123,7 @@ require_once($ABS_PATH."application/modules/login/wc-check-session.inc.php");
               <br>
 							<div>
 								<label class="ids_label">IDS:&nbsp;</label>
-								<input type="text" class="ids_used" placeholder="&nbsp;&nbsp;Used IDs appear here">
+								<input type="text" class="ids_used inp-field" placeholder="&nbsp;&nbsp;Used IDs appear here">
 							</div>	
 							<br>
 							<footer class="">

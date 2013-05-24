@@ -277,6 +277,22 @@ h2 {
 		width: 5em;			
 }
 
+
+.index_module
+.button {
+		border: none;
+		height: 2.5em;
+		width: 5em;
+}
+
+
+
+
+
+
+
+
+
 /* function buttons */
 .index_module
 #entry_refresh {
@@ -303,7 +319,8 @@ h2 {
 		background-size: contain;
 		border: solid thin #A7A7A7;
 		box-shadow: none;
-		height: 2.3em;
+		height: 2.6em;
+		margin-left: 0.2em;
 		width: 25em;
 		text-indent: 1em;
 }
@@ -312,11 +329,7 @@ h2 {
 #id_to_edit {
 		border: solid 2px #393;
 }
-.index_module
-.ids_used {
-		height: 2.3em;
-		width: 22em; 
-}
+
 .index_module
 .ids_label {
 		font-size: 1.3em;
@@ -341,9 +354,11 @@ h2 {
 
 .index_module
 .dtl_label {
-		font-size: 1.3em;	
+		font-size: 1.3em;
 		
 }
+
+
 
 
 .index_module
