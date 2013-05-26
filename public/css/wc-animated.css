@@ -1,0 +1,20 @@
+@charset "UTF-8";
+/* Colors */
+
+
+/*******CSS animations**************/
+
+.animate-backgr-navi {
+	transition-property: height;
+	transition-duration: 500ms;
+}
+
+.animate-backgr-navi:hover {
+	height: 2.7em;
+}
+
+	
+	
+	
+	
+	

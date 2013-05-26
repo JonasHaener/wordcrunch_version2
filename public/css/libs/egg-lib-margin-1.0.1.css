@@ -1,6 +1,19 @@
 @charset "UTF-8";
 /* CSS Document */
 
+.padd-all-0_3em {
+		padding: 0.3em;
+}
+
+.padd-left-1em {
+		padding-left: 1em;
+}
+.padd-right-1em {
+		padding-right: 1em;
+}
+
+
+
 .margin-left-1-5em {
 		margin-left: 1.5em;
 	
@@ -11,12 +24,11 @@
 .margin-top-1em {
 		margin-top: 2em;
 }
-.margin-bottom-1em {
-		margin-bottom: 1em;
+.margin-top-3_5em { 
+		margin-top: 3.5em;
 }
-.margin-bottom-0_5em {
-		margin-bottom: .5em;
-}
+
+
 .margin-right-1-5em {
 		margin-right: 3em;
 	
@@ -42,11 +54,19 @@
 .margin-top-10perc { 
 		margin-top: 10%;
 }
-.margin-top-3_5em { 
-		margin-top: 3.5em;
+
+.margin-bottom-1em {
+		margin-bottom: 1em;
 }
+.margin-bottom-0_5em {
+		margin-bottom: .5em;
+}
+
 .margin-bott-3_5em { 
 		margin-bottom: 3.5em;
+}
+.margin-bott-5em { 
+		margin-bottom: 5em;
 }
 
 .padd-top-1em {

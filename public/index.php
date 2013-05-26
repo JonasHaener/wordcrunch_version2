@@ -19,23 +19,15 @@ require_once($ABS_PATH."application/modules/login/wc-check-session.inc.php");
 		<!--header bar-->
 			<header class="header"></header>
 		<!--user bar-->
-			<nav id="menu_navi" class="margin-bott-3_5em border-bott-thin-grey">
-				<ul>
-					<li class="border-right-grey backgr-grey-l">
-						<a href="" class="">Hello,&nbsp;<strong><?php echo $SESS_USER;?></strong></a>
-					</li>
-					<li class="border-right-grey backgr-grey-l backgr-win-purple-h">
-						<a href="logout.php" id="logout_button" class="center-text txt-white-h">Logout</a>
-					</li>
-					<li class="border-right-grey backgr-win-purple-h txt-white-h">
-						<a href="" id="keyword_button" class="center-text txt-white-h">Keywords</a>
-					</li>
+			<nav id="menu_navi" class="margin-bott-5em border-bott-thin-grey">
+			
+						<a href="" class="backgr-grey-l border-bott-thin-grey border-right-grey height-2em padd-left-1em padd-all-0_3em padd-right-1em">Hello,&nbsp;<strong><?php echo $SESS_USER;?></strong></a>
+			
+						<a href="logout.php" id="logout_button" class="animate-backgr-navi backgr-grey-l center-text height-2em txt-white-h border-bott-thin-grey border-right-grey backgr-win-purple-h padd-all-0_3em">Logout</a>
+						<a href="" id="keyword_button" class="animate-backgr-navi backgr-win-white backgr-win-purple-h border-right-grey center-text height-2em txt-white-h border-bott-thin-grey padd-all-0_3em">Keywords</a>
 					<?php if($SESS_RIGHTS > 1) { ?>
-					<li class="border-right-grey backgr-win-purple-h txt-white-h">
-						<a href="" id="keytext_button" class="center-text txt-white-h">Keytext</a>
-					</li>
+						<a href="" id="keytext_button" class="animate-backgr-navi backgr-win-white center-text height-2em txt-white-h border-bott-thin-grey border-right-grey backgr-win-purple-h padd-all-0_3em">Keytext</a>
 					<?php } ?>
-				</ul>
 			</nav>
 			<div id="spinner" class="js-spinner ajax-load"></div>
 		<!--main container-->
@@ -56,7 +48,7 @@ require_once($ABS_PATH."application/modules/login/wc-check-session.inc.php");
                       <label for="dtl_en" class="dtl_label">&nbsp;EN:&nbsp;</label>
                       <input type="radio" id="dtl_en" name="dtl_lang" value="english">
 											<label class="ids_label">&nbsp;&nbsp;IDS:&nbsp;</label>
-											<input type="text" class="ids_used inp-field" placeholder="&nbsp;&nbsp;Used IDs appear here">
+											<input type class="ids_used inp-field" placeholder="&nbsp;&nbsp;Used IDs appear here">
 											<datalist id="search_list" class="js-dl-searchlist">
 												<!--<option value="filled from DB"></option>-->
 											</datalist>
