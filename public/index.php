@@ -20,14 +20,12 @@ require_once($ABS_PATH."application/modules/login/wc-check-session.inc.php");
 			<header class="header"></header>
 		<!--user bar-->
 			<nav id="menu_navi" class="margin-bott-5em border-bott-thin-grey">
-			
-						<a href="" class="backgr-grey-l border-bott-thin-grey border-right-grey height-2em padd-left-1em padd-all-0_3em padd-right-1em">Hello,&nbsp;<strong><?php echo $SESS_USER;?></strong></a>
-			
-						<a href="logout.php" id="logout_button" class="animate-backgr-navi backgr-grey-l center-text height-2em txt-white-h border-bott-thin-grey border-right-grey backgr-win-purple-h padd-all-0_3em">Logout</a>
-						<a href="" id="keyword_button" class="animate-backgr-navi backgr-win-white backgr-win-purple-h border-right-grey center-text height-2em txt-white-h border-bott-thin-grey padd-all-0_3em">Keywords</a>
-					<?php if($SESS_RIGHTS > 1) { ?>
-						<a href="" id="keytext_button" class="animate-backgr-navi backgr-win-white center-text height-2em txt-white-h border-bott-thin-grey border-right-grey backgr-win-purple-h padd-all-0_3em">Keytext</a>
-					<?php } ?>
+        <a href="" class="backgr-grey-l border-bott-thin-grey border-right-grey height-2em padd-left-1em padd-all-0_3em padd-right-1em">Hello,&nbsp;<strong><?php echo $SESS_USER;?></strong></a>
+        <a href="logout.php" id="logout_button" class="animate-backgr-navi backgr-grey-l center-text height-2em txt-white-h border-bott-thin-grey border-right-grey backgr-win-purple-h padd-all-0_3em">Logout</a>
+        <a href="" id="keyword_button" class="animate-backgr-navi backgr-win-white backgr-win-purple-h border-right-grey center-text height-2em txt-white-h border-bott-thin-grey padd-all-0_3em">Keywords</a>
+      	<?php if($SESS_RIGHTS > 1) { ?>
+        <a href="" id="keytext_button" class="animate-backgr-navi backgr-win-white center-text height-2em txt-white-h border-bott-thin-grey border-right-grey backgr-win-purple-h padd-all-0_3em">Keytext</a>
+      	<?php } ?>
 			</nav>
 			<div id="spinner" class="js-spinner ajax-load"></div>
 		<!--main container-->
