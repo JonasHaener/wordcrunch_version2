@@ -11,7 +11,7 @@ if (WC_A instanceof Object === false) {
 WC_KW.forms = {};
 
 /**---------------------------
-		View – Forms
+		Navigation - control
  ---------------------------**/
 WC_KW.forms = {
 		
